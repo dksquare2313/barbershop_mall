@@ -197,6 +197,7 @@ class FirebaseData {
   }
 
   static async getData(uid) {
+    console.log(uid);
     let snapshot = await db.collection("master").where("_id", "==", uid).get();
     if (!snapshot.empty) {
       // console.log(snapshot.docs[0].data());

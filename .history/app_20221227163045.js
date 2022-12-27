@@ -310,7 +310,7 @@ app.post("/appoinment", async (req, res) => {
   console.log("/appointment");
   console.log(app);
 
-  let string = "/confirm?appid=" + app._id + "&id=" + app.uid;
+  let string = "/confirm?appid=" + appointment._id + "&id=" + appointment.uid;
   res.redirect(string);
 });
 
@@ -319,16 +319,16 @@ app.get("/confirm", async (req, res) => {
   const id = req.query.id;
 
   const appointment = await FirebaseData.getData(id);
-  console.log("--------");
-  console.log(appointment.appointment);
+
   let time = 0;
   for (let index = 0; index < appointment.appointment.length; index++) {
     if (appointment.appointment[index]._id == appid) {
       break;
     }
-    time = time + appointment.appointment[index].len;
+    time = time + appointment[index].len;
   }
-
+  console.log("--------");
+  console.log(appointment.appointment);
   if (appointment) {
     const dataSend = {
       data: appointment.appointment.find((obj) => obj._id == appid),

@@ -197,10 +197,10 @@ class FirebaseData {
   }
 
   static async getData(uid) {
-    let snapshot = await db.collection("master").where("_id", "==", uid).get();
+    let snapshot = await db.collection("master").doc(uid).get();
+
     if (!snapshot.empty) {
-      // console.log(snapshot.docs[0].data());
-      return snapshot.docs[0].data();
+      return snapshot.data().appointment;
     } else {
       return false;
     }
