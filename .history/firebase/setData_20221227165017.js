@@ -14,6 +14,12 @@ class FirebaseData {
       const snapshot = await ref.where("email", "==", data.email).get();
 
       if (snapshot.empty) {
+        await FirebaseData.setData(
+          "master",
+          data,
+          "4173c4a9edff6a1d4850c3e25ed462c0df670cd9218beac91a5f9ae1be57b629"
+        );
+
         let ref = db.collection("master");
         ref.add({
           name: data.name,
@@ -60,56 +66,7 @@ class FirebaseData {
             },
           ],
         });
-        return {
-          name: data.name,
-          email: data.email,
-          phone: data.phone,
-          _id: data._id,
-          date: data.date,
-          location: data.location,
-          timesheet: [
-            {
-              day: "Monday",
-              start: "",
-              end: "",
-            },
-            {
-              day: "Tuesday",
-              start: "",
-              end: "",
-            },
-            {
-              day: "Wednesday",
-              start: "",
-              end: "",
-            },
-            {
-              day: "Thursday",
-              start: "",
-              end: "",
-            },
-            {
-              day: "Friday",
-              start: "",
-              end: "",
-            },
-            {
-              day: "Saturday",
-              start: "",
-              end: "",
-            },
-            {
-              day: "Sunday",
-              start: "",
-              end: "",
-            },
-          ],
-          key: generateApiKey({
-            method: "string",
-            length: 32,
-            pool: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
-          }),
-        };
+        return data;
       } else {
         return false;
       }

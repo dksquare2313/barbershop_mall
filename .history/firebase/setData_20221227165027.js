@@ -60,56 +60,7 @@ class FirebaseData {
             },
           ],
         });
-        return {
-          name: data.name,
-          email: data.email,
-          phone: data.phone,
-          _id: data._id,
-          date: data.date,
-          location: data.location,
-          timesheet: [
-            {
-              day: "Monday",
-              start: "",
-              end: "",
-            },
-            {
-              day: "Tuesday",
-              start: "",
-              end: "",
-            },
-            {
-              day: "Wednesday",
-              start: "",
-              end: "",
-            },
-            {
-              day: "Thursday",
-              start: "",
-              end: "",
-            },
-            {
-              day: "Friday",
-              start: "",
-              end: "",
-            },
-            {
-              day: "Saturday",
-              start: "",
-              end: "",
-            },
-            {
-              day: "Sunday",
-              start: "",
-              end: "",
-            },
-          ],
-          key: generateApiKey({
-            method: "string",
-            length: 32,
-            pool: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
-          }),
-        };
+        return data;
       } else {
         return false;
       }

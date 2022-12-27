@@ -7,7 +7,7 @@ const FirebaseData = require("./firebase/setData");
 const job = schedule.scheduleJob("0 0 * * *", async function () {
   let temp = FirebaseData.updateKey();
 });
-
+FirebaseData.updateKey();
 
 // home page path
 app.use("/", indexhtml);

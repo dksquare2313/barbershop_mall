@@ -132,8 +132,9 @@ app.get("/user", function (req, res) {
             "4173c4a9edff6a1d4850c3e25ed462c0df670cd9218beac91a5f9ae1be57b629"
           ).then(
             function (value) {
+              const user = snapshot.docs[0].data();
               res.render("user_account", {
-                user: value,
+                user: user,
               });
             },
             function (error) {
@@ -180,10 +181,12 @@ app.get("/logout", (req, res) => {
 app.post("/user", (req, res) => {
   const data = req.body;
 
-  const reqData = FirebaseData.updateUser(
-    data,
-    "4173c4a9edff6a1d4850c3e25ed462c0df670cd9218beac91a5f9ae1be57b629"
-  );
+  console.log(data);
+
+  // const reqData = FirebaseData.updateUser(
+  //   data,
+  //   "4173c4a9edff6a1d4850c3e25ed462c0df670cd9218beac91a5f9ae1be57b629"
+  // );
   res.redirect(req.get("referer"));
 });
 

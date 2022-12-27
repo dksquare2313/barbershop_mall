@@ -180,6 +180,8 @@ app.get("/logout", (req, res) => {
 app.post("/user", (req, res) => {
   const data = req.body;
 
+  console.log(data);
+
   const reqData = FirebaseData.updateUser(
     data,
     "4173c4a9edff6a1d4850c3e25ed462c0df670cd9218beac91a5f9ae1be57b629"

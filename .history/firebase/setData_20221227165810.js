@@ -104,11 +104,7 @@ class FirebaseData {
               end: "",
             },
           ],
-          key: generateApiKey({
-            method: "string",
-            length: 32,
-            pool: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
-          }),
+          key:
         };
       } else {
         return false;

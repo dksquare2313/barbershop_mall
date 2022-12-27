@@ -5,6 +5,62 @@ var admin = require("firebase-admin");
 const { generateApiKey } = require("generate-api-key");
 
 class FirebaseData {
+  static setData(collection, data, key) {
+    if (
+      key == "4173c4a9edff6a1d4850c3e25ed462c0df670cd9218beac91a5f9ae1be57b629"
+    ) {
+      // change this to env
+      let ref = db.collection(collection);
+      ref.add({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        _id: data._id,
+        date: data.date,
+        location: data.location,
+        timesheet: [
+          {
+            day: "Monday",
+            start: "",
+            end: "",
+          },
+          {
+            day: "Tuesday",
+            start: "",
+            end: "",
+          },
+          {
+            day: "Wednesday",
+            start: "",
+            end: "",
+          },
+          {
+            day: "Thursday",
+            start: "",
+            end: "",
+          },
+          {
+            day: "Friday",
+            start: "",
+            end: "",
+          },
+          {
+            day: "Saturday",
+            start: "",
+            end: "",
+          },
+          {
+            day: "Sunday",
+            start: "",
+            end: "",
+          },
+        ],
+      });
+    } else {
+      throw new Error("ERROR!");
+    }
+  }
+
   // create user
   static async createUser(data, key) {
     if (
@@ -14,102 +70,12 @@ class FirebaseData {
       const snapshot = await ref.where("email", "==", data.email).get();
 
       if (snapshot.empty) {
-        let ref = db.collection("master");
-        ref.add({
-          name: data.name,
-          email: data.email,
-          phone: data.phone,
-          _id: data._id,
-          date: data.date,
-          location: data.location,
-          timesheet: [
-            {
-              day: "Monday",
-              start: "",
-              end: "",
-            },
-            {
-              day: "Tuesday",
-              start: "",
-              end: "",
-            },
-            {
-              day: "Wednesday",
-              start: "",
-              end: "",
-            },
-            {
-              day: "Thursday",
-              start: "",
-              end: "",
-            },
-            {
-              day: "Friday",
-              start: "",
-              end: "",
-            },
-            {
-              day: "Saturday",
-              start: "",
-              end: "",
-            },
-            {
-              day: "Sunday",
-              start: "",
-              end: "",
-            },
-          ],
-        });
-        return {
-          name: data.name,
-          email: data.email,
-          phone: data.phone,
-          _id: data._id,
-          date: data.date,
-          location: data.location,
-          timesheet: [
-            {
-              day: "Monday",
-              start: "",
-              end: "",
-            },
-            {
-              day: "Tuesday",
-              start: "",
-              end: "",
-            },
-            {
-              day: "Wednesday",
-              start: "",
-              end: "",
-            },
-            {
-              day: "Thursday",
-              start: "",
-              end: "",
-            },
-            {
-              day: "Friday",
-              start: "",
-              end: "",
-            },
-            {
-              day: "Saturday",
-              start: "",
-              end: "",
-            },
-            {
-              day: "Sunday",
-              start: "",
-              end: "",
-            },
-          ],
-          key: generateApiKey({
-            method: "string",
-            length: 32,
-            pool: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
-          }),
-        };
+        await FirebaseData.setData(
+          "master",
+          data,
+          "4173c4a9edff6a1d4850c3e25ed462c0df670cd9218beac91a5f9ae1be57b629"
+        );
+        return data;
       } else {
         return false;
       }
