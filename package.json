@@ -28,6 +28,7 @@
     "firebase-admin": "^11.4.0",
     "generate-api-key": "^1.0.2",
     "mongoose": "^6.7.2",
+    "node-schedule": "^2.1.0",
     "stripe": "^11.4.0",
     "uuid": "^9.0.0"
   }
