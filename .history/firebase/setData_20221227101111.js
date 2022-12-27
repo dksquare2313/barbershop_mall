@@ -82,13 +82,20 @@ class FirebaseData {
     if (
       key == "4173c4a9edff6a1d4850c3e25ed462c0df670cd9218beac91a5f9ae1be57b629"
     ) {
+      let ref = db.collection("users");
+      const snapshot = await ref.where("_id", "==", data.id).get();
+      if (snapshot.empty) {
+        return false;
+      }
+
+      let docID = snapshot.docs[0].id;
       let user = db.collection("master").doc("master");
 
       user.update({
         timesheet: data,
       });
 
-      return true;
+      return false;
     } else {
       return false;
     }

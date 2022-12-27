@@ -53,7 +53,7 @@
       display: none;
     }
     #edithours{
-      display: none;
+      display: inline;
     }
   </style>
   
@@ -367,7 +367,7 @@
                   </table>
                 
                   <button type="submit" class="btn btn-primary">Submit</button>
-                   <button type="cancel" class="btn btn-secondary" onclick="onCancelEdit()">Cancel</button>
+                   <button type="cancel" class="btn btn-secondary" onclick="onCancelUpdate()">Cancel</button>
                 </form> 
               </div>
             </div>
@@ -415,6 +415,7 @@
           table_row.appendChild(table_data2);
 
           table_body.appendChild(table_row);
+          
         }
 
        
@@ -471,15 +472,10 @@ function onCancelUpdate(){
  document.getElementById("aboutme").style.display = "inline";
 }
 
-function onCancelEdit(){
- document.getElementById("edithours").style.display = "none";
- document.getElementById("aboutme").style.display = "inline";
-}
-
 
 function hours(){
-  document.getElementById("aboutme").style.display = "none";
-  document.getElementById("edithours").style.display = "inline";
+   document.getElementById("editform").style.display = "none";
+ document.getElementById("aboutme").style.display = "inline";
 }
 
 

@@ -367,7 +367,7 @@
                   </table>
                 
                   <button type="submit" class="btn btn-primary">Submit</button>
-                   <button type="cancel" class="btn btn-secondary" onclick="onCancelEdit()">Cancel</button>
+                   <button type="cancel" class="btn btn-secondary" onclick="onCancelUpdate()">Cancel</button>
                 </form> 
               </div>
             </div>
@@ -471,8 +471,8 @@ function onCancelUpdate(){
  document.getElementById("aboutme").style.display = "inline";
 }
 
-function onCancelEdit(){
- document.getElementById("edithours").style.display = "none";
+function onCancelUpdate(){
+ document.getElementById("editform").style.display = "none";
  document.getElementById("aboutme").style.display = "inline";
 }
 

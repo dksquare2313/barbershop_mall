@@ -237,12 +237,10 @@ app.post("/timesheet", (req, res) => {
     },
   ];
 
-  console.log(refactor);
-
-  const reqData = FirebaseData.updateTimesheet(
-    refactor,
-    "4173c4a9edff6a1d4850c3e25ed462c0df670cd9218beac91a5f9ae1be57b629"
-  );
+  // const reqData = FirebaseData.updateTimesheet(
+  //   refactor,
+  //   "4173c4a9edff6a1d4850c3e25ed462c0df670cd9218beac91a5f9ae1be57b629"
+  // );
   res.redirect(req.get("referer"));
 });
 

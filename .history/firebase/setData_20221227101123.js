@@ -88,7 +88,7 @@ class FirebaseData {
         timesheet: data,
       });
 
-      return true;
+      return false;
     } else {
       return false;
     }
