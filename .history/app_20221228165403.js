@@ -116,8 +116,8 @@ app.get("/barber", (req, res) => {
       } else {
         const data = {
           user: user,
-          ongoing: [],
-          incoming: [],
+          ongoing: accepted.slice(0, 7),
+          incoming: incoming.slice(0, 7),
         };
         res.render("barber", { loggedIn: true, user: data });
       }

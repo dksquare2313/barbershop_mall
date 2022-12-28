@@ -96,7 +96,7 @@
                 <div class="col mt-2">
                     <div class="add-new">
                         <button class="btn btn-dark" data-toggle="modal" data-target="#modalCart"><span class="fa fa-plus"></span> New Appointment</button>
-                        <button class="btn btn-info ml-5" onclick="onReload()"> Reload</button>
+                        <button class="btn btn-info ml-5" data-toggle="modal" data-target="#modalCart"> Reload</button>
                     </div>
                 </div>
               </div>
@@ -139,17 +139,6 @@
               </div>
           </div>
         </div>
-        <script>
-          function onQR(){
-            window.location.href = '/qr';
-          }
-          function onUSER(){
-            window.location.href = '/user';
-          }
-          function onReload(){
-            window.location.reload();
-          }
-        </script>
         <!-- script for incoming  -->
         <script>
           
@@ -415,12 +404,6 @@ aria-hidden="true">
 
   <!-- Template Main JS File -->
   <script src="static/js/main.js"></script>
-
-  <script>
-    setInterval(function() {
-                  window.location.reload();
-                }, 300000); 
-  </script>
 
 
 </body>

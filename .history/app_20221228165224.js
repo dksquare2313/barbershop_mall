@@ -101,29 +101,21 @@ app.get("/barber", (req, res) => {
       const snapshot = await ref.where("email", "==", userData.email).get();
       const user = snapshot.docs[0].data();
 
-      if (user.appointment != undefined) {
-        let incoming = user.appointment.filter((obj) => obj.accepted == false);
-        let accepted = user.appointment.filter(
-          (obj) => obj.accepted == true && obj.completed == false
-        );
+      let incoming = user.appointment.filter((obj) => obj.accepted == false);
+      let accepted = user.appointment.filter(
+        (obj) => obj.accepted == true && obj.completed == false
+      );
 
-        const data = {
-          user: user,
-          ongoing: accepted.slice(0, 7),
-          incoming: incoming.slice(0, 7),
-        };
-        res.render("barber", { loggedIn: true, user: data });
-      } else {
-        const data = {
-          user: user,
-          ongoing: [],
-          incoming: [],
-        };
-        res.render("barber", { loggedIn: true, user: data });
-      }
+      const data = {
+        user: user,
+        ongoing: accepted.slice(0, 7),
+        incoming: incoming.slice(0, 7),
+      };
+      res.render("barber", { loggedIn: true, user: data });
     })
     .catch((error) => {
       res.redirect("/login");
+      console.log(error);
     });
 });
 
@@ -292,7 +284,6 @@ app.get("/book", (req, res) => {
           res.redirect("/login");
         }
       } else {
-        res.redirect(req.get("referer"));
       }
     })
     .catch(async (error) => {
@@ -311,7 +302,7 @@ app.get("/qr", async (req, res) => {
         await ref.where("_id", "==", userData.uid).get()
       ).docs[0].data();
 
-      if (snapshot.key != undefined) {
+      if (snapshot.key) {
         res.render("key", {
           key: snapshot.key,
           loggedIn: true,

@@ -102,24 +102,6 @@ app.get("/barber", (req, res) => {
       const user = snapshot.docs[0].data();
 
       if (user.appointment != undefined) {
-        let incoming = user.appointment.filter((obj) => obj.accepted == false);
-        let accepted = user.appointment.filter(
-          (obj) => obj.accepted == true && obj.completed == false
-        );
-
-        const data = {
-          user: user,
-          ongoing: accepted.slice(0, 7),
-          incoming: incoming.slice(0, 7),
-        };
-        res.render("barber", { loggedIn: true, user: data });
-      } else {
-        const data = {
-          user: user,
-          ongoing: [],
-          incoming: [],
-        };
-        res.render("barber", { loggedIn: true, user: data });
       }
     })
     .catch((error) => {

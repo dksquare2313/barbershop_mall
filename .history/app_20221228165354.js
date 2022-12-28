@@ -114,10 +114,15 @@ app.get("/barber", (req, res) => {
         };
         res.render("barber", { loggedIn: true, user: data });
       } else {
+        let incoming = user.appointment.filter((obj) => obj.accepted == false);
+        let accepted = user.appointment.filter(
+          (obj) => obj.accepted == true && obj.completed == false
+        );
+
         const data = {
           user: user,
-          ongoing: [],
-          incoming: [],
+          ongoing: accepted.slice(0, 7),
+          incoming: incoming.slice(0, 7),
         };
         res.render("barber", { loggedIn: true, user: data });
       }

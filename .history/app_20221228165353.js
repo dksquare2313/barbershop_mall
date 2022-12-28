@@ -114,12 +114,6 @@ app.get("/barber", (req, res) => {
         };
         res.render("barber", { loggedIn: true, user: data });
       } else {
-        const data = {
-          user: user,
-          ongoing: [],
-          incoming: [],
-        };
-        res.render("barber", { loggedIn: true, user: data });
       }
     })
     .catch((error) => {

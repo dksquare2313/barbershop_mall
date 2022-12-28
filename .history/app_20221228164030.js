@@ -101,29 +101,21 @@ app.get("/barber", (req, res) => {
       const snapshot = await ref.where("email", "==", userData.email).get();
       const user = snapshot.docs[0].data();
 
-      if (user.appointment != undefined) {
-        let incoming = user.appointment.filter((obj) => obj.accepted == false);
-        let accepted = user.appointment.filter(
-          (obj) => obj.accepted == true && obj.completed == false
-        );
+      let incoming = user.appointment.filter((obj) => obj.accepted == false);
+      let accepted = user.appointment.filter(
+        (obj) => obj.accepted == true && obj.completed == false
+      );
 
-        const data = {
-          user: user,
-          ongoing: accepted.slice(0, 7),
-          incoming: incoming.slice(0, 7),
-        };
-        res.render("barber", { loggedIn: true, user: data });
-      } else {
-        const data = {
-          user: user,
-          ongoing: [],
-          incoming: [],
-        };
-        res.render("barber", { loggedIn: true, user: data });
-      }
+      const data = {
+        user: user,
+        ongoing: accepted.slice(0, 7),
+        incoming: incoming.slice(0, 7),
+      };
+      res.render("barber", { loggedIn: true, user: data });
     })
     .catch((error) => {
       res.redirect("/login");
+      console.log(error);
     });
 });
 
@@ -285,14 +277,10 @@ app.get("/book", (req, res) => {
         await ref.where("_id", "==", userData.uid).get()
       ).docs[0].data();
 
-      if (snapshot.key != undefined) {
-        if (snapshot.key == key) {
-          res.render("book", { user: snapshot });
-        } else {
-          res.redirect("/login");
-        }
+      if (snapshot.key == key) {
+        res.render("book", { user: snapshot });
       } else {
-        res.redirect(req.get("referer"));
+        res.redirect("/login");
       }
     })
     .catch(async (error) => {
@@ -311,14 +299,12 @@ app.get("/qr", async (req, res) => {
         await ref.where("_id", "==", userData.uid).get()
       ).docs[0].data();
 
-      if (snapshot.key != undefined) {
-        res.render("key", {
-          key: snapshot.key,
-          loggedIn: true,
-        });
-      } else {
-        res.redirect(req.get("referer"));
-      }
+      console.log(snapshot);
+
+      res.render("key", {
+        key: snapshot.key,
+        loggedIn: true,
+      });
     })
     .catch(async (error) => {
       res.redirect("/login");
@@ -331,17 +317,13 @@ app.post("/appoinment", async (req, res) => {
   const data = req.body;
   let count = 1;
   let ref = db.collection("master");
-  const snapshot = await ref.where("_id", "==", data.id).get();
-  if (snapshot.empty) {
-    count = 1;
-  } else {
-    let appoinment = snapshot.docs[0].data().appointment;
-    if (appoinment == undefined) {
+    const snapshot = await ref.where("_id", "==", id).get();
+    if (snapshot.empty) {
       count = 1;
-    } else {
-      count = appoinment.length + 1;
     }
-  }
+  
+  let appoinment = snapshot.docs[0].data().appointment;
+
 
   let app = {
     uid: data.id,
@@ -358,7 +340,7 @@ app.post("/appoinment", async (req, res) => {
     service: data.service.split(" - ")[0],
     accepted: false,
     completed: false,
-    index: count,
+    index:
   };
 
   const appointment = await FirebaseData.createAppointment(app);
@@ -375,27 +357,26 @@ app.get("/confirm", async (req, res) => {
   const id = req.query.id;
 
   const appointment = await FirebaseData.getData(id);
-  if (appointment.appointment == undefined) {
-    res.redirect(req.get("referer"));
+  console.log("--------");
+  console.log(appointment.appointment);
+  let time = 0;
+  for (let index = 0; index < appointment.appointment.length; index++) {
+    if (appointment.appointment[index]._id == appid) {
+      break;
+    }
+    time = time + appointment.appointment[index].len;
+  }
+
+  if (appointment) {
+    const dataSend = {
+      data: appointment.appointment.find((obj) => obj._id == appid),
+      time: time,
+    };
+
+    console.log(dataSend);
+    res.render("confirm", { data: dataSend });
   } else {
-    let time = 0;
-    for (let index = 0; index < appointment.appointment.length; index++) {
-      if (appointment.appointment[index]._id == appid) {
-        break;
-      }
-      time = time + appointment.appointment[index].len;
-    }
-
-    if (appointment) {
-      const dataSend = {
-        data: appointment.appointment.find((obj) => obj._id == appid),
-        time: time,
-      };
-
-      res.render("confirm", { data: dataSend });
-    } else {
-      res.redirect(req.get("referer"));
-    }
+    res.redirect(req.get("referer"));
   }
 });
 
