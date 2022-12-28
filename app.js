@@ -93,6 +93,20 @@ app.get("/pricing", (req, res) => {
     });
 });
 
+app.get("/barber", (req, res) => {
+  const sessionCookie = req.cookies.session || "";
+  admin
+    .auth()
+    .verifySessionCookie(sessionCookie, true /** checkRevoked */)
+    .then(async (userData) => {
+      // console.log("Logged in:", userData);
+      res.render("barber", { loggedIn: true });
+    })
+    .catch((error) => {
+      res.render("barber", { loggedIn: false });
+    });
+});
+
 // app.get("/gallery", (req, res) => {
 //   // res.sendFile(__dirname + "/views/gallery.ejs");
 //   res.render('gallery');
