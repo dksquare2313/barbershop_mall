@@ -214,56 +214,15 @@ class FirebaseData {
     if (snapshot.docs[0].data().appointment != undefined) {
       let oldAppArray = snapshot.docs[0].data().appointment;
       oldAppArray.push(data);
-
-      let newAppArray = new Array();
-      let storeAppArray = new Array();
-
-      for (let index = 0; index < oldAppArray.length; index++) {
-        if (oldAppArray[index].completed) {
-          storeAppArray.push(oldAppArray[index]);
-        } else {
-          newAppArray.push(oldAppArray[index]);
-        }
-      }
-
       let user = db.collection("master").doc(snapshot.docs[0].id);
 
       let appointments = db
-        .collection("master")
-        .doc(snapshot.docs[0].id)
+        .collection("users")
+        .doc(docID)
         .collection("appointments");
 
-      let appsnapshot = await appointments.get();
-      if (appsnapshot.empty && storeAppArray.length != 0) {
-        await appointments.add({ appointment: storeAppArray });
-      } else {
-        for (let index = 0; index < appsnapshot.size; index++) {
-          let apptemp = appsnapshot.docs[index].data().appointment;
-          console.log(apptemp);
-          if (apptemp.length <= 100) {
-            let tempuser = db
-              .collection("master")
-              .doc(snapshot.docs[0].id)
-              .collection("appointments")
-              .doc(appsnapshot.docs[index].id);
-
-            for (let i = 0; i < storeAppArray.length; i++) {
-              apptemp.push(storeAppArray[i]);
-            }
-
-            let test = await tempuser.update({
-              appointment: apptemp,
-            });
-            break;
-          } else {
-            await appointments.add({ appointment: storeAppArray });
-            break;
-          }
-        }
-      }
-
       let test = await user.update({
-        appointment: newAppArray,
+        appointment: oldAppArray,
       });
       return oldAppArray;
     } else {

@@ -235,11 +235,10 @@ class FirebaseData {
 
       let appsnapshot = await appointments.get();
       if (appsnapshot.empty && storeAppArray.length != 0) {
-        await appointments.add({ appointment: storeAppArray });
+        await appointments.add({ appointments: storeAppArray });
       } else {
         for (let index = 0; index < appsnapshot.size; index++) {
           let apptemp = appsnapshot.docs[index].data().appointment;
-          console.log(apptemp);
           if (apptemp.length <= 100) {
             let tempuser = db
               .collection("master")
@@ -256,7 +255,7 @@ class FirebaseData {
             });
             break;
           } else {
-            await appointments.add({ appointment: storeAppArray });
+            await appointments.add({ appointments: storeAppArray });
             break;
           }
         }
