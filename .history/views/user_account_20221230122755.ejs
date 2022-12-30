@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  
+
+  <title>Barber Shop</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="static/img/favicon.png" rel="icon">
+  <link href="static/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+
+  <!-- Vendor CSS Files -->
+  <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="static/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="static/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="static/vendor/line-awesome/css/line-awesome.min.css" rel="stylesheet">
+  <link href="static/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="static/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="static/vendor/aos/aos.css" rel="stylesheet">
+
+
+
+  <!-- Template Main CSS File -->
+  <link href="static/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Selecao - v2.2.0
+  * Template URL: https://bootstrapmade.com/selecao-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+
+
+  <style>
+    #editform{
+      display: none;
+    }
+    #appointmentform{
+      display: none;
+    }
+    #edithours{
+      display: none;
+    }
+  </style>
+  
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center  header-transparent ">
+    <div class="container d-flex align-items-center">
+
+      <div class="logo mr-auto">
+        <!-- <h1 class="text-light"><a href="index.html">A Shaving Grace</a></h1> -->
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <a href="/"><img src="static/img/logo.png" alt="" class="img-fluid"></a>
+      </div>
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#services">Services</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/#team">Team</a></li>
+          <li><a href="./galary.html">Galary</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="/qr">Book</a></li>
+           <li><a href="/barber">Dashboard</a></li>
+          <li class="active"><a href="#"><%= user.name %></a></li>
+
+        </ul>
+      </nav><!-- .nav-menu -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex flex-column justify-content-end align-items-center" >
+    <div id="heroCarousel" class="container carousel carousel-fade" data-ride="carousel">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <div class="carousel-container">
+          <h2 class="animate__animated animate__fadeInDown"><%= user.email %></h2>
+          <p class="animate__animated animate__fadeInDown">User ID: <%= user._id %></p>
+          <a href="/sessionLogout" class="btn-get-started animate__animated animate__fadeInUp scrollto">Log Out</a>
+        </div>
+      </div>
+
+
+
+    </div>
+
+    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+      <defs>
+        <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+      </defs>
+      <g class="wave1">
+        <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)">
+      </g>
+      <g class="wave2">
+        <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)">
+      </g>
+      <g class="wave3">
+        <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
+      </g>
+    </svg>
+
+  </section><!-- End Hero -->
+
+   <% if (user.name != " " ) { %>
+        <main id="aboutme">
+
+          <!-- ======= About Section ======= -->
+          <section class="about">
+            <div class="container">
+
+              <div class="section-title" data-aos="zoom-out">
+                <h2>Profile</h2>
+                <p><%= user.name %></p> 
+
+                <div class="card mt-3" style="border: transparent;">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-4">
+                        <h6 class="card-subtitle mb-2 text-muted"><b>Phone:</b><br> <%= user.phone %></h6>
+                        <br>
+                        <h6 class="card-subtitle mb-2 text-muted"><b>Address:</b><br> <%= user.addr1 +", "+user.addr2+", "+user.city+", "+user.state+", "+user.zip %></h6>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+                <div class="row">
+                    <div class="col"><hr></div>
+                    <div class="col-3 text-center"><a style="cursor: pointer;" onclick="onClick()">Edit user information</a></div>
+                    <div class="col"><hr></div>
+                  </div>
+
+                 <h2 class="mt-5">Hours of operation:</h2>
+                   <p >Hours</p>
+
+                   <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Day</th>
+                          <th scope="col">Opening Time</th>
+                          <th scope="col">Closing Time</th>
+                        </tr>
+                      </thead>
+                      <tbody id="timesheet">
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Monday</td>
+                          <td class="time"><%= user.timesheet[0].start != ""? user.timesheet[0].start:'N/A' %></td>
+                          <td class="time"><%= user.timesheet[0].end != ""? user.timesheet[0].end:'N/A' %></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>Tuesday</td>
+                          <td class="time"><%= user.timesheet[1].start != ""? user.timesheet[1].start:'N/A' %></td>
+                          <td class="time"><%= user.timesheet[1].end != ""? user.timesheet[1].end:'N/A' %></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">3</th>
+                          <td>Wednesday</td>
+                          <td class="time"><%= user.timesheet[2].start != ""? user.timesheet[2].start:'N/A' %></td>
+                          <td class="time"><%= user.timesheet[2].end != ""? user.timesheet[2].end:'N/A' %></td>
+                        </tr>
+                         <tr>
+                          <th scope="row">4</th>
+                          <td>Thursday</td>
+                          <td class="time"><%= user.timesheet[3].start != ""? user.timesheet[3].start:'N/A' %></td>
+                          <td class="time"><%= user.timesheet[3].end != ""? user.timesheet[3].end:'N/A' %></td>
+                        </tr>
+                         <tr>
+                          <th scope="row">5</th>
+                          <td>Friday</td>
+                          <td class="time"><%= user.timesheet[4].start != ""? user.timesheet[4].start:'N/A' %></td>
+                          <td class="time"><%= user.timesheet[4].end != ""? user.timesheet[4].end:'N/A' %></td>
+                        </tr>
+                         <tr>
+                          <th scope="row">6</th>
+                          <td>Saturday</td>
+                          <td class="time"><%= user.timesheet[5].start != ""? user.timesheet[5].start:'N/A' %></td>
+                          <td class="time"><%= user.timesheet[5].end != ""? user.timesheet[5].end:'N/A' %></td>
+                        </tr>
+                         <tr>
+                          <th scope="row">7</th>
+                          <td>Sunday</td>
+                          <td class="time"><%= user.timesheet[6].start != ""? user.timesheet[6].start:'N/A' %></td>
+                          <td class="time"><%= user.timesheet[6].end != ""? user.timesheet[6].end:'N/A' %></td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <script>
+                      let timesheet = document.getElementById('timesheet');
+                      let time = timesheet.getElementsByClassName("time");
+
+
+                      for (let index = 0; index < time.length; index++) {
+                        time[index].innerHTML = parseTime(time[index].innerHTML);
+                        
+                      }
+                      function parseTime(time) {
+                        if(time != "N/A"){
+                          const timeStamp = time.split(":");
+                          let hh = timeStamp[0];
+                          let mm = timeStamp[1];
+
+                          if (parseInt(hh) >= 13) {
+                            return hh - 12 + ":" + mm + " PM";
+                          } else if(parseInt(hh) == 12){
+                            return hh + ":" + mm + " PM";
+                          }  else {
+                            return hh + ":" + mm + " AM";
+                          }
+                        }else{
+                          return "N/A";
+                        }
+                        
+                      }
+                    </script>
+
+                  <div class="row">
+                    <div class="col"><hr></div>
+                    <div class="col-3 text-center"><a style="cursor: pointer;" onclick="hours()">Edit hours</a></div>
+                    <div class="col"><hr></div>
+                  </div>
+
+
+                  <div class="row">
+                    <div class="col">
+                      <h2 class="mt-5">Barbers:</h2>
+                      <p >Employees</p>
+                    </div>
+                    <div class="col text-right">
+                      <button type="button" class="btn btn-secondary mt-5 " data-toggle="modal" data-target="#modalCart">+ Add Employee</button>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <% for (var i =0; i < user.employees.length;  i++ ) { %>
+                    <div class="col">
+                      <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                          <h5 class="card-title"><%= user.employees[i].name %></h5>
+                          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+
+                          <a href="#" class="card-link">Card link</a>
+                          <a href="#" class="card-link">Another link</a>
+                        </div>
+                      </div>
+                    </div>
+                    <% } %>
+                  </div>
+
+
+
+
+
+                   
+
+
+
+
+             
+               
+              </div>
+
+            
+
+            </div>
+          </section><!-- End About Section -->
+
+
+                     <!-- Modal: modalCart -->
+<div class="modal fade" id="modalCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <!--Header-->
+    <div class="modal-header">
+      <h4 class="modal-title" id="myModalLabel">Add new Employee</h4>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <!--Body-->
+    <div class="modal-body">
+
+      <form method="post" action="/employee">
+
+            
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email:</label>
+              <input type="email" class="form-control" name="email" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Name:</label>
+              <input type="text" class="form-control" name="name" placeholder="Enter name">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Phone:</label>
+              <input type="number" class="form-control" name="phone" placeholder="Enter name">
+            </div>
+             <div class="form-group">
+              <label for="exampleInputEmail1">Bio:</label>
+              <input type="text" class="form-control" name="bio" placeholder="Enter you bio ...">
+            </div>
+          <button type="submit" class="btn btn-success">Submit</button>
+          <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+      </form>
+
+      
+    </div>
+
+  </div>
+</div>
+</div>
+<!-- Modal: modalCart -->
+
+          <!-- ======= Cta Section ======= -->
+          <section id="cta" class="cta">
+            <div class="container">
+
+              <div class="row" data-aos="zoom-out">
+                <div class="col-lg-8 text-center text-lg-left">
+                  <h3 style="color: white;">Better yet, see us in person!</h3>
+                  <p style="color: white;"> We love our customers, so feel free to visit during normal business hours.</p>
+                  <hr style="border-color: white;">
+                  <p style="color: white;">Hours</p>
+                  <table id="times" style="color: white;">
+                    <tr>
+                    
+                      <td><p>Mon</p></td>
+                      <td><p>&nbsp;&nbsp; 09:00 am – 05:00 pm</p></td>
+
+                    </tr>
+                    <tr>
+                      <td><p>Tue</p></td>
+                      <td><p>&nbsp;&nbsp; 09:00 am – 05:00 pm</p></td>
+                    </tr>
+                    <tr>
+                      <td><p>Wed</p></td>
+                      <td><p>&nbsp;&nbsp; 09:00 am – 05:00 pm</p></td>
+                    </tr>
+                    <tr>
+                      <td><p>Thu</p></td>
+                      <td><p>&nbsp;&nbsp; 09:00 am – 05:00 pm</p></td>
+                    </tr>
+                    <tr>
+                      <td><p>Fri</p></td>
+                      <td><p>&nbsp;&nbsp; 09:00 am – 05:00 pm</p></td>
+                    </tr>
+                    <tr>
+                      <td><p>Sat</p></td>
+                      <td><p>&nbsp;&nbsp; 09:00 am – 05:00 pm</p></td>
+                    </tr>
+                    <tr>
+                      <td><p>Sun</p></td>
+                      <td><p>&nbsp;&nbsp; We need a break too!</p></td>
+                    </tr>
+                  </table>
+                </div>
+                <!-- no need caz we already have the location section  -->
+                <!-- <div class="col-lg-4 cta-btn-container text-center">
+                  <div>
+                    <h4 style="color: white;">A Shaving Grace-Barber Shop</h4>
+                    <p>20131 Hwy 59 N Ste.2232 Houston, TX,77338</p>
+                    <a class="cta-btn align-middle" href="https://www.google.com/maps?q=20131+Hwy+59+N+Ste.2232+Houston,+TX,77338&um=1&ie=UTF-8&sa=X&ved=2ahUKEwilmsPfn6D7AhUoj4kEHRVkAoYQ_AUoAXoECAEQAw" target="_blank">Direction</a>
+                  </div>
+                
+                </div> -->
+              </div>
+
+            </div>
+          </section>
+          <!-- End Cta Section -->
+
+
+        </main><!-- End #main -->
+    <% }else{ %>
+      <main>
+        <section class="animate__animated animate__fadeInRight">
+          <div class="row justify-content-center">
+            <div class="col-4 justify-content-center">
+              <div class="card" >
+              <div class="card-body">
+                <form method="post" action="/user">
+                  <input type="hidden" name="id" value="<%= user._id %>">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Name:</label>
+                    <input type="text" class="form-control" name="name" placeholder="Enter your full name ...">
+                    <small id="emailHelp" class="form-text text-muted">What should we call you?</small>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Phone</label>
+                    <input type="number" class="form-control" name="phone" placeholder="Enter your phone number ...">
+                    <small id="emailHelp" class="form-text text-muted">We will use your number to contact your when you are next.</small>
+                  </div>
+
+                   <div class="form-group">
+                    <label for="exampleInputPassword1">Address Line 1</label>
+                    <input type="text" class="form-control" name="addr1" placeholder="Enter your Address line 1">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Apartment, Suit, etc.</label>
+                    <input type="text" class="form-control" name="addr2" placeholder="Enter your apt, suit.">
+                  </div>
+
+                   <div class="form-group">
+                    <label for="exampleInputPassword1">City</label>
+                    <input type="text" class="form-control" name="city" placeholder="Enter your city ...">
+                  </div>
+
+                   <div class="form-group">
+                    <label for="exampleInputPassword1">State</label>
+                    <input type="text" class="form-control" name="state" placeholder="Enter your state (IL -> Illinois) ...">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">ZIP / Postal code</label>
+                    <input type="text" class="form-control" name="zip" placeholder="Enter your zip/postal code ...">
+                  </div>
+                  <hr>
+
+                  <!-- <div class="form-group">
+                    <label for="exampleInputPassword1">Services:</label>
+                    <div id="service">
+                        
+                    </div>
+                   
+                    <div class="row my-4">
+                       <div class="col">
+                        <hr>
+                      </div>
+                       <div class="col-4 text-center">
+                        <button type="button" class="btn btn-secondary" onclick="onAdd()">Add Service</button>
+                      </div>
+                      <div class="col">
+                        <hr>
+                      </div>
+                    </div>
+
+                    <script>
+                      let service = document.getElementById("service");
+                      onAdd();
+
+                      function onAdd(){
+                        let row = document.createElement("div");
+                        row.classList.add("row");
+                        row.classList.add("my-2");
+
+                        let col = document.createElement("div");
+                        col.classList.add("col");
+
+                        let col1 = document.createElement("div");
+                        col1.classList.add("col");
+
+                        let input = document.createElement("input");
+                        input.classList.add("form-control");
+                        input.setAttribute("name","service.service"+(service.getElementsByClassName("row").length +1));
+                        input.setAttribute("placeholder","Title "+(service.getElementsByClassName("row").length+1));
+                        input.setAttribute("type","text");
+
+                        let input1 = document.createElement("input");
+                        input1.classList.add("form-control");
+                        input1.setAttribute("name","service.time"+(service.getElementsByClassName("row").length+1));
+                        input1.setAttribute("placeholder","Duration "+(service.getElementsByClassName("row").length+1));
+                        input1.setAttribute("type","number");
+
+
+                        col.appendChild(input);
+                        col1.appendChild(input1);
+
+                        row.appendChild(col);
+                        row.appendChild(col1);
+
+                        service.appendChild(row)
+                      }
+                    </script>
+
+                  </div> -->
+
+
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form> 
+              </div>
+            </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+    <% } %>
+
+
+     <main id="editform">
+        <section class="animate__animated animate__fadeInRight">
+          
+          <div class="row justify-content-center">
+            <div class="col-4 justify-content-center">
+              <div class="card" >
+              <div class="card-body">
+                <form method="post" action="/user">
+                  <input type="hidden" name="id" value="<%= user._id %>">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Name:</label>
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Enter your full name ..." value="<%= user.name %>">
+                    <small id="emailHelp" class="form-text text-muted">What should we call you?</small>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Phone</label>
+                    <input type="number" class="form-control" name="phone" id="phone" placeholder="Enter your phone number ..." value="<%= user.phone %>">
+                    <small id="emailHelp" class="form-text text-muted">We will use your number to contact your when you are next.</small>
+                  </div>
+
+                   <div class="form-group">
+                    <label for="exampleInputPassword1">Address Line 1</label>
+                    <input type="text" class="form-control" name="addr1" id="addr1" placeholder="Enter your Address line 1" value="<%= user.addr1 %>">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Apartment, Suit, etc.</label>
+                    <input type="text" class="form-control" name="addr2" id="addr2" placeholder="Enter your apt, suit." value="<%= user.addr2 %>">
+                  </div>
+
+                   <div class="form-group">
+                    <label for="exampleInputPassword1">City</label>
+                    <input type="text" class="form-control" name="city" id="city" placeholder="Enter your city ..." value="<%= user.city %>">
+                  </div>
+
+                   <div class="form-group">
+                    <label for="exampleInputPassword1">State</label>
+                    <input type="text" class="form-control" name="state" id="state" placeholder="Enter your state (IL -> Illinois) ..." value="<%= user.state %>">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">ZIP / Postal code</label>
+                    <input type="text" class="form-control" name="zip" id="zip" placeholder="Enter your zip/postal code ..." value="<%= user.zip %>">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                   <button type="cancel" class="btn btn-secondary" onclick="onCancelUpdate()">Cancel</button>
+                </form> 
+              </div>
+            </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <main id="edithours">
+        <section class="animate__animated animate__fadeInRight">
+          
+          <div class="row justify-content-center">
+            <div class="col-6 justify-content-center">
+              <div class="card" >
+              <div class="card-body">
+                <form method="post" action="/timesheet">
+                  <input type="hidden" name="id" value="<%= user._id %>">
+                  
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Day</th>
+                        <th scope="col">Opening Time</th>
+                        <th scope="col">Closing Time</th>
+                      </tr>
+                    </thead>
+                    <tbody id="table_body">
+                     
+                    </tbody>
+                  </table>
+                
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                   <button type="cancel" class="btn btn-secondary" onclick="onCancelEdit()">Cancel</button>
+                </form> 
+              </div>
+            </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <script>
+        let table_body = document.getElementById("table_body");
+
+        let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday","Sunday"];
+        let string = [
+          "<%= user.timesheet[0].start %>", 
+        "<%= user.timesheet[1].start %>", 
+        "<%= user.timesheet[2].start %>", 
+        "<%= user.timesheet[3].start %>", 
+        "<%= user.timesheet[4].start %>", 
+        "<%= user.timesheet[5].start %>",
+        "<%= user.timesheet[6].start %>",]
+        let string2 =[
+        "<%= user.timesheet[0].end %>", 
+        "<%= user.timesheet[1].end %>", 
+        "<%= user.timesheet[2].end %>", 
+        "<%= user.timesheet[3].end %>", 
+        "<%= user.timesheet[4].end %>", 
+        "<%= user.timesheet[5].end %>",
+        "<%= user.timesheet[6].end %>"]
+
+        console.log(string)
+
+        for (let index = 1; index < 8; index++) {
+          let table_row = document.createElement("tr");
+
+          let table_head = document.createElement("th");
+          table_head.setAttribute("scope", "row");
+          table_head.innerText = index;
+
+          let table_data = document.createElement("td");
+          table_data.innerText = days[index-1];
+
+          let table_data1 = document.createElement("td");
+          let table_data2 = document.createElement("td");
+
+          let input_start = document.createElement("input");
+          input_start.setAttribute("type","time");
+          input_start.setAttribute("class","form-control");
+          input_start.setAttribute("value",string[index-1]);
+          input_start.setAttribute("name",`${days[index-1]}_start`);
+
+
+          let input_end = document.createElement("input");
+          input_end.setAttribute("type","time");
+          input_end.setAttribute("class","form-control");
+          input_end.setAttribute("value",string2[index-1]);
+          input_end.setAttribute("name",`${days[index-1]}_end`);
+
+          table_data1.appendChild(input_start);
+          table_data2.appendChild(input_end);
+
+          table_row.appendChild(table_head);
+          table_row.appendChild(table_data);
+          table_row.appendChild(table_data1);
+          table_row.appendChild(table_data2);
+
+          table_body.appendChild(table_row);
+        }
+
+       
+
+
+      </script>
+
+
+
+ 
+     
+
+
+   <script>
+
+
+function onClick(){
+
+ document.getElementById("aboutme").style.display = "none";
+ document.getElementById("editform").style.display = "inline";
+
+}
+
+function onCancelUpdate(){
+ document.getElementById("editform").style.display = "none";
+ document.getElementById("aboutme").style.display = "inline";
+}
+
+function onCancelEdit(){
+ document.getElementById("edithours").style.display = "none";
+ document.getElementById("aboutme").style.display = "inline";
+}
+
+
+function hours(){
+  document.getElementById("aboutme").style.display = "none";
+  document.getElementById("edithours").style.display = "inline";
+}
+
+
+</script> 
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+
+      <a href="index.html"><img src="static/img/logo.png" alt="logo" class="my-5" height="100px"></a>
+
+
+      <div class="social-links">
+        <!-- <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a> -->
+        <a href="https://www.facebook.com/Christianbarbersalon" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="https://instagram.com/ashavinggrace?igshid=YmMyMTA2M2Y=" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="https://maps.app.goo.gl/jzYqgFXZ7s7KvCL66?g_st=ic" target="_blank" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <!-- <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a> -->
+      </div>
+      <div class="copyright">
+
+
+        &copy; Copyright <strong><span>AShavingGraceBarberShop</span></strong>. All Rights Reserved
+
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/selecao-bootstrap-template/ -->
+        
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
+
+
+  <!-- Start of LiveChat (www.livechat.com) code -->
+<script>
+    window.__lc = window.__lc || {};
+    window.__lc.license = 14723673;
+    ;(function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice))
+</script>
+<noscript><a href="https://www.livechat.com/chat-with/14723673/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
+<!-- End of LiveChat code -->
+
+  <!-- Vendor JS Files -->
+  <script src="static/vendor/jquery/jquery.min.js"></script>
+  <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="static/vendor/php-email-form/validate.js"></script>
+  <script src="static/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="static/vendor/venobox/venobox.min.js"></script>
+  <script src="static/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="static/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="static/js/main.js"></script>
+
+  <script>
+    const weekday = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+    const d = new Date();
+    let day = weekday[d.getDay()-1];
+    
+
+    var table = document.getElementById("times");
+    const child = table.children.item(0).children;
+
+    for(x in child){
+      var tr = child[x];
+      var td = child[x].children.item(0).innerText;
+      if(day === td){
+        tr.style.color = "#f7080d";
+      }
+    }
+
+  </script>
+
+
+      <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
