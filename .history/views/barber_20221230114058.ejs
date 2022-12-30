@@ -159,18 +159,18 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <% for (var i =0; i < user.allapp.length;  i++ ) { %>
+                        <% for (var i =0; i < allapp.length;  i++ ) { %>
                             <tr>
                               <th scope="row"><%= i+1 %> </th>
-                              <td><%= user.allapp[i].name %> <br>  <small><%= user.allapp[i].email %></small></td>
-                               <td><%= user.allapp[i].phone %></td>
-                              <td><%= user.allapp[i].service %></td>
-                               <td style="font-weight: bolder;color: <%= user.user.appointment[i].accepted?'green':'black' %>;"><%= user.allapp[i].accepted %></td>
-                              <td style="font-weight: bolder;color: <%= user.user.appointment[i].completed?'green':'black' %>;"><%= user.allapp[i].completed %></td>
+                              <td><%= allapp[i].name %> <br>  <small><%= user.user.appointment[i].email %></small></td>
+                               <td><%= user.user.appointment[i].phone %></td>
+                              <td><%= user.user.appointment[i].service %></td>
+                               <td style="font-weight: bolder;color: <%= user.user.appointment[i].accepted?'green':'black' %>;"><%= user.user.appointment[i].accepted %></td>
+                              <td style="font-weight: bolder;color: <%= user.user.appointment[i].completed?'green':'black' %>;"><%= user.user.appointment[i].completed %></td>
                               <td>
                                 <div class="row justify-content-end">
                                   <div class="col-sm">
-                                    <button type="button" class="btn btn-danger" style="display:flex;" onclick="onReject('<%= user.allapp[i]._id %>')">Delete <span class="fa fa-close ml-2 mt-1"></span></button>
+                                    <button type="button" class="btn btn-danger" style="display:flex;" onclick="onReject('<%= user.user.appointment[i]._id %>')">Delete <span class="fa fa-close ml-2 mt-1"></span></button>
                                   </div>
                                 </div>
                               </td>

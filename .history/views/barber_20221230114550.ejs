@@ -162,7 +162,7 @@
                         <% for (var i =0; i < user.allapp.length;  i++ ) { %>
                             <tr>
                               <th scope="row"><%= i+1 %> </th>
-                              <td><%= user.allapp[i].name %> <br>  <small><%= user.allapp[i].email %></small></td>
+                              <td><%= user.allapp[i].name %> <br>  <small><%= user.allapps[i].email %></small></td>
                                <td><%= user.allapp[i].phone %></td>
                               <td><%= user.allapp[i].service %></td>
                                <td style="font-weight: bolder;color: <%= user.user.appointment[i].accepted?'green':'black' %>;"><%= user.allapp[i].accepted %></td>

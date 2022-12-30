@@ -128,7 +128,7 @@ app.get("/barber", (req, res) => {
           let accepted = user.appointment.filter(
             (obj) => obj.accepted == true && obj.completed == false
           );
-          console.log(allapp);
+
           const data = {
             user: user,
             allapp: allapp,

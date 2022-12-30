@@ -101,47 +101,43 @@ app.get("/barber", (req, res) => {
       const snapshot = await ref.where("email", "==", userData.email).get();
       const user = snapshot.docs[0].data();
 
+      let allapp = user.appointment;
+
+      let appointments = await db
+        .collection("master")
+        .doc(snapshot.docs[0].id)
+        .collection("appointments")
+        .get();
+
+      for (let i = 0; i < appointments.size; i++) {
+        for (
+          let j = 0;
+          j < appointments.docs[i].data().appointment.length;
+          j++
+        ) {
+          let tempArray = appointments.docs[i].data().appointment;
+          allapp.push(tempArray[j]);
+        }
+      }
+
       if (user.appointment != undefined) {
+        let incoming = user.appointment.filter((obj) => obj.accepted == false);
+        let accepted = user.appointment.filter(
+          (obj) => obj.accepted == true && obj.completed == false
+        );
 
-          let allapp = user.appointment;
-
-          let appointments = await db
-            .collection("master")
-            .doc(snapshot.docs[0].id)
-            .collection("appointments")
-            .get();
-
-          for (let i = 0; i < appointments.size; i++) {
-            for (
-              let j = 0;
-              j < appointments.docs[i].data().appointment.length;
-              j++
-            ) {
-              let tempArray = appointments.docs[i].data().appointment;
-              allapp.push(tempArray[j]);
-            }
-          }
-
-          let incoming = user.appointment.filter(
-            (obj) => obj.accepted == false
-          );
-          let accepted = user.appointment.filter(
-            (obj) => obj.accepted == true && obj.completed == false
-          );
-          console.log(allapp);
-          const data = {
-            user: user,
-            allapp: allapp,
-            ongoing: accepted.slice(0, 7),
-            incoming: incoming.slice(0, 7),
-          };
+        const data = {
+          user: user,
+          allapp: [],
+          ongoing: accepted.slice(0, 7),
+          incoming: incoming.slice(0, 7),
+        };
         res.render("barber", { loggedIn: true, user: data });
       } else {
         const data = {
           user: user,
           ongoing: [],
           incoming: [],
-          allapp: [],
         };
         res.render("barber", { loggedIn: true, user: data });
       }
