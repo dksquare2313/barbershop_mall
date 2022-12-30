@@ -66,25 +66,20 @@
 </head>
 
 <body>
+  <nav class="navbar navbar-dark bg-dark">
+  <!-- Navbar content -->
   <div class="row">
-    <div class="col-sm">
-        <nav class="navbar navbar-dark bg-dark">
-        <!-- Navbar content -->
-        <div class="row">
-          <div class="col-sm-2">
-            <a href="/"><img src="static/img/logo.png" alt="" class="img-fluid" ></a>
-          </div>
-          <div class="col-sm"></div>
-          <div class="col-sm-1 mt-2 text-center"><button type="button" class="btn btn-link" style="color: white;">Logout</button></div>
-        </div>
-      </nav>
+    <div class="col-sm-2">
+       <a href="/"><img src="static/img/logo.png" alt="" class="img-fluid" ></a>
     </div>
+    <div class="col-sm"></div>
+    <div class="col-sm-1 mt-2 text-center"><button type="button" class="btn btn-link" style="color: white;">Logout</button></div>
   </div>
-  
+</nav>
 
 
   <div class="row" style="margin: 0px; margin-top: 0px;">
-      <div class="col-sm-2 col-md-2">
+      <div class="col-sm-2">
       
         <nav class="nav flex-column" style="width: 200px;">
          <button type="button" class="btn btn-dark mt-4" onclick="onDashboard()">Dashboard</button>
@@ -96,7 +91,7 @@
         </nav>
         
       </div>
-      <div class="col-sm col-md my-4 ">
+      <div class="col-sm my-4 ">
         <div class="row">
           <div class="col-sm">
               <div class="row">
@@ -256,44 +251,7 @@
               <div class="row">
                 <div class="col-sm">
 
-                    <table class="table">
-                      <thead class="thead-dark" style="border-radius: 5px;">
-                        <tr>
-                          <th scope="col-sm">#</th>
-                          <th scope="col-sm">Name:</th>
-                          <th scope="col-sm">Phone:</th>
-                          <th scope="col-sm">Service:</th>
-                          <th scope="col-sm">Options:</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <% for (var i =0; i < user.ongoing.length;  i++ ) { %>
-
-                            <tr>
-                              <th scope="row"><%= i+1 %> </th>
-                              <td><%= user.ongoing[i].name %> <br>  <small><%= user.ongoing[i].email %></small></td>
-                              <td><%= user.ongoing[i].phone %></td>
-                              <td><%= user.ongoing[i].service %></td>
-                              <td>
-                                <div class="row">
-                                  <div class="col-sm">
-                                    <button type="button" class="btn btn-success" style="display:flex;" onclick="onComplete('<%= user.ongoing[i]._id %>')" >Complete <span class="fa fa-check ml-2 mt-1"></span></button>
-                                  </div>
-                                  <div class="col-sm">
-                                    <button type="button" class="btn btn-warning" style="display:flex;" onclick="onPush('<%= user.ongoing[i]._id %>')">Push <span class="fa fa-arrow-down ml-2 mt-1"></span></button>
-                                  </div>
-                                  <div class="col-sm">
-                                    <button type="button" class="btn btn-danger" style="display:flex;" onclick="onDelete('<%= user.ongoing[i]._id %>')">Delete <span class="fa fa-close ml-2 mt-1"></span></button>
-                                  </div>
-                                </div>
-                              </td>
-                            </tr>
-
-                        
-                        <% } %>
-                      
-                      </tbody>
-                    </table>
+                  
                 </div>
               </div>
           </div>

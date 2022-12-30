@@ -66,25 +66,20 @@
 </head>
 
 <body>
+  <nav class="navbar navbar-dark bg-dark">
+  <!-- Navbar content -->
   <div class="row">
-    <div class="col-sm">
-        <nav class="navbar navbar-dark bg-dark">
-        <!-- Navbar content -->
-        <div class="row">
-          <div class="col-sm-2">
-            <a href="/"><img src="static/img/logo.png" alt="" class="img-fluid" ></a>
-          </div>
-          <div class="col-sm"></div>
-          <div class="col-sm-1 mt-2 text-center"><button type="button" class="btn btn-link" style="color: white;">Logout</button></div>
-        </div>
-      </nav>
+    <div class="col-sm-2">
+       <a href="/"><img src="static/img/logo.png" alt="" class="img-fluid" ></a>
     </div>
+    <div class="col-sm"></div>
+    <div class="col-sm-1 mt-2"><button type="button" class="btn btn-link" style="color: white;">Logout</button></div>
   </div>
-  
+</nav>
 
 
-  <div class="row" style="margin: 0px; margin-top: 0px;">
-      <div class="col-sm-2 col-md-2">
+  <div class="row ">
+      <div class="col-sm-2">
       
         <nav class="nav flex-column" style="width: 200px;">
          <button type="button" class="btn btn-dark mt-4" onclick="onDashboard()">Dashboard</button>
@@ -96,9 +91,9 @@
         </nav>
         
       </div>
-      <div class="col-sm col-md my-4 ">
+      <div class="col-sm my-4 ">
         <div class="row">
-          <div class="col-sm">
+          <div class="col">
               <div class="row">
                 <div class="col-sm-3  text-left">
                   <h2 id="title">Incoming Requests</h2>
@@ -111,15 +106,18 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-sm">
-                   <table class="table" id="dashboard">
+                  <div class="col">
+                      <div class="table-container border" >
+                <ul class="responsive-table">
+
+                    <table class="table" id="dashboard">
                       <thead class="thead-dark" style="border-radius: 5px;">
                         <tr>
-                          <th scope="col-sm">#</th>
-                          <th scope="col-sm">Name:</th>
-                          <th scope="col-sm">phone:</th>
-                          <th scope="col-sm">Service:</th>
-                          <th scope="col-sm">Options:</th>
+                          <th scope="col">#</th>
+                          <th scope="col">Name:</th>
+                          <th scope="col">phone:</th>
+                          <th scope="col">Service:</th>
+                          <th scope="col">Options:</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -131,10 +129,10 @@
                               <td><%= user.incoming[i].service %></td>
                               <td>
                                 <div class="row justify-content-end">
-                                  <div class="col-sm-6">
+                                  <div class="col">
                                     <button type="button" class="btn btn-success" style="display:flex;" onclick="onAccept('<%= user.incoming[i]._id %>')">Accept <span class="fa fa-check ml-2 mt-1"></span></button>
                                   </div>
-                                  <div class="col-sm-6">
+                                  <div class="col">
                                     <button type="button" class="btn btn-danger" style="display:flex;" onclick="onReject('<%= user.incoming[i]._id %>')">Reject <span class="fa fa-close ml-2 mt-1"></span></button>
                                   </div>
                                 </div>
@@ -149,13 +147,13 @@
                     <table class="table" id="viewall" hidden>
                       <thead class="thead-dark" style="border-radius: 5px;">
                         <tr>
-                          <th scope="col-sm">#</th>
-                          <th scope="col-sm">Name:</th>
-                          <th scope="col-sm">phone:</th>
-                          <th scope="col-sm">Service:</th>
-                          <th scope="col-sm">Accepted:</th>
-                          <th scope="col-sm">Completed:</th>
-                          <th scope="col-sm">Options:</th>
+                          <th scope="col">#</th>
+                          <th scope="col">Name:</th>
+                          <th scope="col">phone:</th>
+                          <th scope="col">Service:</th>
+                          <th scope="col">Accepted:</th>
+                          <th scope="col">Completed:</th>
+                          <th scope="col">Options:</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -169,7 +167,7 @@
                               <td style="font-weight: bolder;color: <%= user.user.appointment[i].completed?'green':'black' %>;"><%= user.user.appointment[i].completed %></td>
                               <td>
                                 <div class="row justify-content-end">
-                                  <div class="col-sm">
+                                  <div class="col">
                                     <button type="button" class="btn btn-danger" style="display:flex;" onclick="onReject('<%= user.user.appointment[i]._id %>')">Delete <span class="fa fa-close ml-2 mt-1"></span></button>
                                   </div>
                                 </div>
@@ -179,12 +177,14 @@
                       
                       </tbody>
                     </table>
-                </div>
+                </ul>
               </div>
-             
+                  </div>
+              </div>
+              
           </div>
         </div>
-        
+
         <script>
           function onView(){
             document.getElementById("title").innerText = "All Appointments";
@@ -248,22 +248,22 @@
          <div class="row" id="ongoing">
           <div class="col">
               <div class="row">
-                <div class="col-sm-3  text-left">
+                <div class="col-3  text-left">
                   <h2>Ongoing Requests</h2>
                 </div>
                
               </div>
-              <div class="row">
-                <div class="col-sm">
+              <div class="table-container">
+                <ul class="responsive-table">
 
                     <table class="table">
                       <thead class="thead-dark" style="border-radius: 5px;">
                         <tr>
-                          <th scope="col-sm">#</th>
-                          <th scope="col-sm">Name:</th>
-                          <th scope="col-sm">Phone:</th>
-                          <th scope="col-sm">Service:</th>
-                          <th scope="col-sm">Options:</th>
+                          <th scope="col">#</th>
+                          <th scope="col">Name:</th>
+                          <th scope="col">Phone:</th>
+                          <th scope="col">Service:</th>
+                          <th scope="col">Options:</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -276,13 +276,13 @@
                               <td><%= user.ongoing[i].service %></td>
                               <td>
                                 <div class="row">
-                                  <div class="col-sm">
+                                  <div class="col">
                                     <button type="button" class="btn btn-success" style="display:flex;" onclick="onComplete('<%= user.ongoing[i]._id %>')" >Complete <span class="fa fa-check ml-2 mt-1"></span></button>
                                   </div>
-                                  <div class="col-sm">
+                                  <div class="col">
                                     <button type="button" class="btn btn-warning" style="display:flex;" onclick="onPush('<%= user.ongoing[i]._id %>')">Push <span class="fa fa-arrow-down ml-2 mt-1"></span></button>
                                   </div>
-                                  <div class="col-sm">
+                                  <div class="col">
                                     <button type="button" class="btn btn-danger" style="display:flex;" onclick="onDelete('<%= user.ongoing[i]._id %>')">Delete <span class="fa fa-close ml-2 mt-1"></span></button>
                                   </div>
                                 </div>
@@ -294,7 +294,7 @@
                       
                       </tbody>
                     </table>
-                </div>
+                </ul>
               </div>
           </div>
         </div>
