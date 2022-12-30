@@ -420,26 +420,9 @@ app.post("/appoinment1", async (req, res) => {
 app.post("/employee", async (req, res) => {
   const data = req.body;
 
-  const sessionCookie = req.cookies.session || "";
-  admin
-    .auth()
-    .verifySessionCookie(sessionCookie, true /** checkRevoked */)
-    .then(async (userData) => {
-      let ref = db.collection("master");
-      const snapshot = await (
-        await ref.where("_id", "==", userData.uid).get()
-      ).docs[0].data();
+  const appointment = await FirebaseData.createAppointment(app);
 
-      if (snapshot.key != undefined) {
-        const appointment = await FirebaseData.addEmployee(data, snapshot._id);
-        res.redirect("/barber");
-      } else {
-        res.redirect(req.get("referer"));
-      }
-    })
-    .catch(async (error) => {
-      res.redirect("/login");
-    });
+  res.redirect("/barber");
 });
 
 app.get("/confirm", async (req, res) => {

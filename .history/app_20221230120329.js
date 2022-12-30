@@ -102,36 +102,39 @@ app.get("/barber", (req, res) => {
       const user = snapshot.docs[0].data();
 
       if (user.appointment != undefined) {
-        let allapp = user.appointment;
 
-        let appointments = await db
-          .collection("master")
-          .doc(snapshot.docs[0].id)
-          .collection("appointments")
-          .get();
+          let allapp = user.appointment;
 
-        for (let i = 0; i < appointments.size; i++) {
-          for (
-            let j = 0;
-            j < appointments.docs[i].data().appointment.length;
-            j++
-          ) {
-            let tempArray = appointments.docs[i].data().appointment;
-            allapp.push(tempArray[j]);
+          let appointments = await db
+            .collection("master")
+            .doc(snapshot.docs[0].id)
+            .collection("appointments")
+            .get();
+
+          for (let i = 0; i < appointments.size; i++) {
+            for (
+              let j = 0;
+              j < appointments.docs[i].data().appointment.length;
+              j++
+            ) {
+              let tempArray = appointments.docs[i].data().appointment;
+              allapp.push(tempArray[j]);
+            }
           }
-        }
 
-        let incoming = user.appointment.filter((obj) => obj.accepted == false);
-        let accepted = user.appointment.filter(
-          (obj) => obj.accepted == true && obj.completed == false
-        );
+          let incoming = user.appointment.filter(
+            (obj) => obj.accepted == false
+          );
+          let accepted = user.appointment.filter(
+            (obj) => obj.accepted == true && obj.completed == false
+          );
 
-        const data = {
-          user: user,
-          allapp: allapp,
-          ongoing: accepted.slice(0, 7),
-          incoming: incoming.slice(0, 7),
-        };
+          const data = {
+            user: user,
+            allapp: allapp,
+            ongoing: accepted.slice(0, 7),
+            incoming: incoming.slice(0, 7),
+          };
         res.render("barber", { loggedIn: true, user: data });
       } else {
         const data = {
@@ -415,31 +418,6 @@ app.post("/appoinment1", async (req, res) => {
   const appointment = await FirebaseData.createAppointment(app);
 
   res.redirect("/barber");
-});
-
-app.post("/employee", async (req, res) => {
-  const data = req.body;
-
-  const sessionCookie = req.cookies.session || "";
-  admin
-    .auth()
-    .verifySessionCookie(sessionCookie, true /** checkRevoked */)
-    .then(async (userData) => {
-      let ref = db.collection("master");
-      const snapshot = await (
-        await ref.where("_id", "==", userData.uid).get()
-      ).docs[0].data();
-
-      if (snapshot.key != undefined) {
-        const appointment = await FirebaseData.addEmployee(data, snapshot._id);
-        res.redirect("/barber");
-      } else {
-        res.redirect(req.get("referer"));
-      }
-    })
-    .catch(async (error) => {
-      res.redirect("/login");
-    });
 });
 
 app.get("/confirm", async (req, res) => {

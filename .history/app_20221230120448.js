@@ -419,27 +419,41 @@ app.post("/appoinment1", async (req, res) => {
 
 app.post("/employee", async (req, res) => {
   const data = req.body;
+  let count = 1;
+  let ref = db.collection("master");
+  const snapshot = await ref.where("_id", "==", data.id).get();
+  if (snapshot.empty) {
+    count = 1;
+  } else {
+    let appoinment = snapshot.docs[0].data().appointment;
+    if (appoinment == undefined) {
+      count = 1;
+    } else {
+      count = appoinment.length + 1;
+    }
+  }
 
-  const sessionCookie = req.cookies.session || "";
-  admin
-    .auth()
-    .verifySessionCookie(sessionCookie, true /** checkRevoked */)
-    .then(async (userData) => {
-      let ref = db.collection("master");
-      const snapshot = await (
-        await ref.where("_id", "==", userData.uid).get()
-      ).docs[0].data();
+  let app = {
+    uid: data.id,
+    _id: generateApiKey({
+      method: "string",
+      length: 24,
+      pool: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
+    }),
+    time: Date.now(),
+    len: parseInt(data.service.split(" - ")[1]),
+    name: data.name,
+    email: data.email,
+    phone: data.phone,
+    service: data.service.split(" - ")[0],
+    accepted: false,
+    completed: false,
+    index: count,
+  };
 
-      if (snapshot.key != undefined) {
-        const appointment = await FirebaseData.addEmployee(data, snapshot._id);
-        res.redirect("/barber");
-      } else {
-        res.redirect(req.get("referer"));
-      }
-    })
-    .catch(async (error) => {
-      res.redirect("/login");
-    });
+  const appointment = await FirebaseData.createAppointment(app);
+
+  res.redirect("/barber");
 });
 
 app.get("/confirm", async (req, res) => {

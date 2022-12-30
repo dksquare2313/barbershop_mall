@@ -431,7 +431,7 @@ app.post("/employee", async (req, res) => {
       ).docs[0].data();
 
       if (snapshot.key != undefined) {
-        const appointment = await FirebaseData.addEmployee(data, snapshot._id);
+        const appointment = await FirebaseData.addEmployee(data);
         res.redirect("/barber");
       } else {
         res.redirect(req.get("referer"));

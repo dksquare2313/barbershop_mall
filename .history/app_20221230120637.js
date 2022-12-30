@@ -431,8 +431,10 @@ app.post("/employee", async (req, res) => {
       ).docs[0].data();
 
       if (snapshot.key != undefined) {
-        const appointment = await FirebaseData.addEmployee(data, snapshot._id);
-        res.redirect("/barber");
+        res.render("key", {
+          key: snapshot.key,
+          loggedIn: true,
+        });
       } else {
         res.redirect(req.get("referer"));
       }
@@ -440,6 +442,10 @@ app.post("/employee", async (req, res) => {
     .catch(async (error) => {
       res.redirect("/login");
     });
+
+  const appointment = await FirebaseData.addEmployee(data);
+
+  res.redirect("/barber");
 });
 
 app.get("/confirm", async (req, res) => {

@@ -429,7 +429,7 @@ class FirebaseData {
     return true;
   }
 
-  static async addEmployee(data, appid) {
+  static async addEmployee(id, appid) {
     let ref = db.collection("master");
     const snapshot = await ref.where("_id", "==", id).get();
     if (snapshot.empty) {

@@ -300,6 +300,28 @@ aria-hidden="true">
           <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
       </form>
 
+
+        <script>
+        let data = [
+          {tag:"Hair cut",time:20},
+          {tag:"Haircut with beard trim",time:35},
+          {tag:"Edge up",time:10},
+          {tag:"Beard trim",time:15},
+          {tag:"Straight razor shave",time:30},
+          {tag:"Hair color",time:35},
+          {tag:"Beard color",time:30},
+          {tag:"Facial and black mask",time:50},
+          {tag:"Shampoo",time:15},
+        ]
+        let opt = document.getElementById("service");
+        
+        for (let index = 0; index < data.length; index++) {
+          let option = document.createElement("option");
+          option.innerText = data[index].tag+" - "+data[index].time;
+          opt.appendChild(option);
+        }
+      </script>
+
       
     </div>
 
