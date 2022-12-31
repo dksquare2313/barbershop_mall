@@ -159,10 +159,10 @@
                         </div>
                         <div class="form-group">
                           <label for="exampleInputEmail1">Phone:</label>
-                          <input type="number" class="form-control" name="phone" id="phone" placeholder="Enter name">
+                          <input type="number" class="form-control" name="phone" placeholder="Enter name">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        <button type="button" class="btn btn-secondary" onclick="onFind()">Find My Appointment</button>
+                        <button type="button" class="btn btn-secondary">Find My Appointment</button>
                       </form>
                     </div>
                   </div>
@@ -175,9 +175,7 @@
       <script>
 
           async function onFind(){
-            let name = document.getElementById("name").value;
-            let email = document.getElementById("email").value;
-            let phone = document.getElementById("phone").value;
+            let name = document.getElementById()
              var newURL = window.location.protocol + "//" + window.location.host + "/find";
             await fetch(newURL, {
                 method: 'POST',
@@ -187,9 +185,7 @@
                 },
                 body: JSON.stringify({ "name": name,"email":email,"phone":phone,"id":"<%= user._id %>" })
             })
-            .then((obj)=>{
-              console.log(obj)
-            window.location.href = obj.url;})
+            .then(()=>{window.location.reload()})
           }
       </script>
 

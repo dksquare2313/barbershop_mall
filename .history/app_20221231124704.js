@@ -564,15 +564,9 @@ app.post("/delete", async (req, res) => {
 app.post("/find", async (req, res) => {
   const data = req.body;
 
-  const appointment = await FirebaseData.appFind(data);
+  const appointment = await FirebaseData.appFind(data.id, data.appid);
 
-  if (appointment) {
-    let string = "/confirm?appid=" + appointment._id + "&id=" + appointment.uid;
-    console.log(string);
-    res.redirect(string);
-  } else {
-    res.redirect(req.get("referer"));
-  }
+  res.redirect("/barber");
 });
 
 

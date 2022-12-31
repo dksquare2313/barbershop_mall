@@ -301,7 +301,6 @@ class FirebaseData {
     for (let index = 0; index < appoinment.length; index++) {
       if (appoinment[index]._id == appid) {
         appoinment[index].accepted = true;
-
         editedList.push(appoinment[index]);
       } else {
         editedList.push(appoinment[index]);
@@ -481,29 +480,6 @@ class FirebaseData {
     }
 
     return true;
-  }
-
-  static async appFind(data) {
-    let ref = db.collection("master");
-    const snapshot = await ref.where("_id", "==", data.id).get();
-    if (snapshot.empty) {
-      return false;
-    }
-
-    let userdata = snapshot.docs[0].data();
-    let appoinment = userdata.appointment;
-
-    for (let i = 0; i < appoinment.length; i++) {
-      if (
-        appoinment[i].name == data.name ||
-        appoinment[i].email == data.email ||
-        appoinment[i].phone == data.phone
-      ) {
-        return appoinment[i];
-      }
-    }
-
-    return false;
   }
 }
 

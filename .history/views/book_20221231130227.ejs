@@ -188,8 +188,7 @@
                 body: JSON.stringify({ "name": name,"email":email,"phone":phone,"id":"<%= user._id %>" })
             })
             .then((obj)=>{
-              console.log(obj)
-            window.location.href = obj.url;})
+              console.log(obj)})
           }
       </script>
 

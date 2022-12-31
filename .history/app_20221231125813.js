@@ -568,7 +568,6 @@ app.post("/find", async (req, res) => {
 
   if (appointment) {
     let string = "/confirm?appid=" + appointment._id + "&id=" + appointment.uid;
-    console.log(string);
     res.redirect(string);
   } else {
     res.redirect(req.get("referer"));

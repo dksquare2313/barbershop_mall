@@ -491,19 +491,15 @@ class FirebaseData {
     }
 
     let userdata = snapshot.docs[0].data();
-    let appoinment = userdata.appointment;
+    let appoinment = userdata.appoinment;
 
     for (let i = 0; i < appoinment.length; i++) {
-      if (
-        appoinment[i].name == data.name ||
-        appoinment[i].email == data.email ||
-        appoinment[i].phone == data.phone
-      ) {
-        return appoinment[i];
+      if (appoinment[i].name == data.name || appoinment[i].email == data.email || appoinment[i].phone == data.phone) {
       }
     }
+  
 
-    return false;
+    return true;
   }
 }
 

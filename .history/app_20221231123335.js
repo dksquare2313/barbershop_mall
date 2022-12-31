@@ -495,9 +495,7 @@ app.get("/confirm", async (req, res) => {
         appointment.appointment[index].barber == barber
       ) {
         if (appointment.appointment[index]._id == appid) {
-          if (appointment.appointment[index].accepted == true) {
-            time = 5;
-          }
+          if(appointment.appointment[index].)
           break;
         }
         time = time + appointment.appointment[index].len;
@@ -560,21 +558,6 @@ app.post("/delete", async (req, res) => {
 
   res.redirect("/barber");
 });
-
-app.post("/find", async (req, res) => {
-  const data = req.body;
-
-  const appointment = await FirebaseData.appFind(data);
-
-  if (appointment) {
-    let string = "/confirm?appid=" + appointment._id + "&id=" + appointment.uid;
-    console.log(string);
-    res.redirect(string);
-  } else {
-    res.redirect(req.get("referer"));
-  }
-});
-
 
 
 

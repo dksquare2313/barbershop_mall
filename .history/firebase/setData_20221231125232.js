@@ -491,7 +491,7 @@ class FirebaseData {
     }
 
     let userdata = snapshot.docs[0].data();
-    let appoinment = userdata.appointment;
+    let appoinment = userdata.appoinment;
 
     for (let i = 0; i < appoinment.length; i++) {
       if (

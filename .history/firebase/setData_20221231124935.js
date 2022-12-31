@@ -485,25 +485,32 @@ class FirebaseData {
 
   static async appFind(data) {
     let ref = db.collection("master");
-    const snapshot = await ref.where("_id", "==", data.id).get();
+    const snapshot = await ref.where("_id", "==", appid).get();
     if (snapshot.empty) {
       return false;
     }
 
-    let userdata = snapshot.docs[0].data();
-    let appoinment = userdata.appointment;
+    let docID = snapshot.docs[0].id;
+    let user = db.collection("master").doc(docID);
+    let employees = snapshot.docs[0].data().employees;
+    let editarray = new Array();
 
-    for (let i = 0; i < appoinment.length; i++) {
-      if (
-        appoinment[i].name == data.name ||
-        appoinment[i].email == data.email ||
-        appoinment[i].phone == data.phone
-      ) {
-        return appoinment[i];
+    if (employees == undefined) {
+      return false;
+    } else {
+      for (let i = 0; i < employees.length; i++) {
+        if (employees[i].email == data.email) {
+          continue;
+        } else {
+          editarray.push(employees[i]);
+        }
       }
+      user.update({
+        employees: editarray,
+      });
     }
 
-    return false;
+    return true;
   }
 }
 

@@ -561,18 +561,12 @@ app.post("/delete", async (req, res) => {
   res.redirect("/barber");
 });
 
-app.post("/find", async (req, res) => {
+app.post("/delete", async (req, res) => {
   const data = req.body;
 
-  const appointment = await FirebaseData.appFind(data);
+  const appointment = await FirebaseData.appDelete(data.id, data.appid);
 
-  if (appointment) {
-    let string = "/confirm?appid=" + appointment._id + "&id=" + appointment.uid;
-    console.log(string);
-    res.redirect(string);
-  } else {
-    res.redirect(req.get("referer"));
-  }
+  res.redirect("/barber");
 });
 
 

@@ -480,24 +480,15 @@ app.get("/confirm", async (req, res) => {
     res.redirect(req.get("referer"));
   } else {
     let time = 0;
-    let barber = "";
 
-    for (let j = 0; j < appointment.appointment.length; j++) {
-      if (appointment.appointment[j]._id == appid) {
-        barber = appointment.appointment[j].barber;
-        break;
-      }
+    for (let j = 0; j < array.length; j++) {
+      const element = array[j];
+      
     }
 
     for (let index = 0; index < appointment.appointment.length; index++) {
-      if (
-        appointment.appointment[index].completed == false &&
-        appointment.appointment[index].barber == barber
-      ) {
+      if (appointment.appointment[index].completed == false && appointment.appointment[index].barber == ) {
         if (appointment.appointment[index]._id == appid) {
-          if (appointment.appointment[index].accepted == true) {
-            time = 5;
-          }
           break;
         }
         time = time + appointment.appointment[index].len;
@@ -560,21 +551,6 @@ app.post("/delete", async (req, res) => {
 
   res.redirect("/barber");
 });
-
-app.post("/find", async (req, res) => {
-  const data = req.body;
-
-  const appointment = await FirebaseData.appFind(data);
-
-  if (appointment) {
-    let string = "/confirm?appid=" + appointment._id + "&id=" + appointment.uid;
-    console.log(string);
-    res.redirect(string);
-  } else {
-    res.redirect(req.get("referer"));
-  }
-});
-
 
 
 
