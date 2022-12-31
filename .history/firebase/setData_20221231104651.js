@@ -71,6 +71,7 @@ class FirebaseData {
           phone: data.phone,
           _id: data._id,
           date: data.date,
+          location: data.location,
           timesheet: [
             {
               day: "Monday",
