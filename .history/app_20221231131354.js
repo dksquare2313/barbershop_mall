@@ -234,7 +234,7 @@ app.get("/logout", (req, res) => {
 });
 
 // ********************************* update user *********************************
-app.post("/user", async (req, res) => {
+app.post("/user", (req, res) => {
   const data = req.body;
 
   const reqData = await FirebaseData.updateUser(
