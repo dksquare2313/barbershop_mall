@@ -48,20 +48,25 @@
         <!-- <h1 class="text-light"><a href="index.html">Selecao</a></h1> -->
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="static/img/logo.png" alt="" class="img-fluid"></a>-->
-        <a href="index.html"><img src="static/img/logo.png" alt="" class="img-fluid"></a>
+        <a href="/"><img src="static/img/logo.png" alt="" class="img-fluid"></a>
       </div>
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li><a href="/">Home</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#services">Services</a></li>
           <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/#team">Team</a></li>
           <li><a href="/gallery">Gallery</a></li>
+          <li><a href="/#contact">Contact</a></li>
           <li><a href="/qr">Book</a></li>
-          <% if (loggedIn) { %>
-            <li><a href="/user">User Account</a></li>
-          <% }else{ %>
-             <li><a href="/login">Login</a></li>
-          <% } %>
+            <% if (loggedIn) { %>
+              <li><a href="/user">User Account</a></li>
+            <% }else{ %>
+               <li><a href="/login">Login</a></li>
+            <% } %>
+         
 
         </ul>
       </nav><!-- .nav-menu -->
