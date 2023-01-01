@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  
+
+  <title>Barber Shop</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="static/img/tab_logo.png" rel="icon">
+  <!-- <link href="static/img/tab_logo.png" rel="apple-touch-icon"> -->
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="static/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="static/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="static/vendor/line-awesome/css/line-awesome.min.css" rel="stylesheet">
+  <link href="static/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="static/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="static/vendor/aos/aos.css" rel="stylesheet">
+
+
+
+  <!-- Template Main CSS File -->
+  <link href="static/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Selecao - v2.2.0
+  * Template URL: https://bootstrapmade.com/selecao-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center  header-transparent ">
+    <div class="container d-flex align-items-center">
+
+      <div class="logo mr-auto">
+        <!-- <h1 class="text-light"><a href="index.html">A Shaving Grace</a></h1> -->
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <a href="/"><img src="static/img/logo.png" alt="" class="img-fluid"></a>
+      </div>
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#services">Services</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/#team">Team</a></li>
+          <li><a href="/gallery">Gallery</a></li>
+          <li><a href="/#contact">Contact</a></li>
+          <li><a href="/qr">Book</a></li>
+            <% if (loggedIn) { %>
+              <li><a href="/user">User Account</a></li>
+            <% }else{ %>
+               <li><a href="/login">Login</a></li>
+            <% } %>
+         
+
+        </ul>
+      </nav><!-- .nav-menu -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex flex-column justify-content-end align-items-center" >
+    <div id="heroCarousel" class="container carousel carousel-fade" data-ride="carousel">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <div class="carousel-container">
+          <h2 class="animate__animated animate__fadeInDown">Welcome!</h2>
+          <p class="animate__animated fanimate__adeInUp">At A Shaving Grace, we think that a barbershop is a dependable, trusted institution in the community at its best.</p>
+          <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-item">
+        <div class="carousel-container">
+          <h2 class="animate__animated animate__fadeInDown">Plan your event styles with us</h2>
+          <p class="animate__animated animate__fadeInUp">We focus on unique hair styles that make you stand out from the crowd. We love hearing the creative ideas our customers have. These ideas are what drive us to create our new collections!</p>
+          <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-item">
+        <div class="carousel-container">
+          <h2 class="animate__animated animate__fadeInDown">Christian Based Barbershop</h2>
+          <p class="animate__animated animate__fadeInUp">While shopping with us, we want you to be completely happy with the experience. If you have questions about us  get in touch! We hope you wonderful experience with us for many years to come.</p>
+          <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+        </div>
+      </div>
+
+      <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+
+      <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+
+    </div>
+
+    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+      <defs>
+        <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+      </defs>
+      <g class="wave1">
+        <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)">
+      </g>
+      <g class="wave2">
+        <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)">
+      </g>
+      <g class="wave3">
+        <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
+      </g>
+    </svg>
+
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="section-title" data-aos="zoom-out">
+          <h2>About</h2>
+          <p>Who we are</p> 
+        </div>
+
+        <div class="row content" data-aos="fade-up">
+          <div class="col-lg-6">
+            <p>
+              Forming strong, long-term relationships with each of our clients is our primary goal. Our services includes:
+            </p>
+            <ul>
+              <li><i class="ri-check-double-line"></i> Professional Service.</li>
+              <li><i class="ri-check-double-line"></i> Wide varity of styles.</li>
+              <li><i class="ri-check-double-line"></i> Experience that speak by its work.</li>
+            </ul>
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0">
+            <p>
+              Each haircut and hot lather shave performed by our unmatched staff of skilled barbers is something they take personally. 
+              No employee at Shaving Grace has less than ten years of experience shaving. Everything has been seen and done by us. 
+              Our focus is on talent and substance, not tricks. Although we enjoy ourselves, we also take our work seriously. 
+            </p>
+            <!-- <a href="#" class="btn-learn-more">Learn More</a> -->
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Cta Section ======= -->
+    <section id="cta" class="cta">
+      <div class="container">
+
+        <div class="row" data-aos="zoom-out">
+          <div class="col-lg-8 text-center text-lg-left">
+            <h3 style="color: white;">Better yet, see us in person!</h3>
+            <p style="color: white;"> We love our customers, so feel free to visit during normal business hours.</p>
+            <hr style="border-color: white;">
+            <p style="color: white;">For hours of operations: See the hours of operations of the mall.</p>
+            <p style="color: white;">NOTE: We stop taking clients 1 hours before closing time.</p>
+          
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+    <!-- End Cta Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container">
+
+        <div class="section-title" data-aos="zoom-out">
+          <h2>Services</h2>
+          <p>What we do offer</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="icon-box" data-aos="zoom-in-left">
+              
+              <div class=" icon">
+                <img src="./static/img/icons/haircut (1).svg" class="icons"/>
+              </div>
+
+                <h4 class="title"><a href="">Haircut</a></h4>
+               <p class="description">We offer haircuts for Kids of Age <br> (1 year old - 16 years old), <br> Adults and Seniors.</p>
+
+    
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mt-5 mt-md-0">
+            <div class="icon-box" data-aos="zoom-in-left" data-aos-delay="100">
+              <div class="icon">
+                <img src="./static/img/icons/shave (1).svg" class="icons"/>
+              </div>
+              <h4 class="title"><a href="">Shave</a></h4>
+              <p class="description">Shave with clippers and or Straight Razor.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mt-5 mt-lg-0 ">
+            <div class="icon-box" data-aos="zoom-in-left" data-aos-delay="200">
+              <div class="icon">
+                <img src="./static/img/icons/facial.svg" class="icons icon-facial"/>
+              </div>
+              <h4 class="title"><a href="">Facial</a></h4>
+              <p class="description">Complete facial package.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mt-5">
+            <div class="icon-box" data-aos="zoom-in-left" data-aos-delay="300">
+              <div class="icon">
+                <img src="./static/img/icons/black mask (1).svg" class="icons"/>
+              </div>
+              <h4 class="title"><a href="">Black Mask</a></h4>
+              <p class="description">Complete black mask package</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mt-5">
+            <div class="icon-box" data-aos="zoom-in-left" data-aos-delay="400">
+              <div class="icon">
+                <img src="./static/img/icons/edge up (1).svg" class="icons"/>
+              </div>
+              <h4 class="title"><a href="">Edge Up</a></h4>
+              <p class="description">Regular with or without Beard Trim</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mt-5">
+            <div class="icon-box" data-aos="zoom-in-left" data-aos-delay="500">
+              <div class="icon">
+                <img src="./static/img/icons/beard coloring (1).svg" class="icons"/>
+              </div>
+              <h4 class="title"><a href="">Beard Coloring</a></h4>
+              <p class="description">Complete beard coloring</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+    
+
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
+      <div class="container">
+
+        <div class="section-title" data-aos="zoom-out">
+          <h2>Portfolio</h2>
+          <p>What we've done</p>
+        </div>
+
+ 
+        <div class="row portfolio-container" data-aos="fade-up">
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-img"><img src="static/img/styles/rs=w-1160,h-1547.webp" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Cut 1</h4>
+              <!-- <p>App</p> -->
+              <a href="static/img/styles/rs=w-1160,h-1547.webp" data-gall="portfolioGallery" class="venobox preview-link" title="App 1">
+                <i class="bx bx-zoom-in"></i>
+              </a>
+              <!-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
+            </div>
+          </div>
+
+          
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-img"><img src="static/img/styles/3.webp" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Cut 3</h4>
+              <!-- <p>App</p> -->
+              <a href="static/img/styles/3.webp" data-gall="portfolioGallery" class="venobox preview-link" title="App 2"><i class="bx bx-zoom-in"></i></a>
+              <!-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-img"><img src="static/img/styles/4.webp" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Cut 4 2</h4>
+              <!-- <p>Card</p> -->
+              <a href="static/img/styles/4.webp" data-gall="portfolioGallery" class="venobox preview-link" title="Card 2"><i class="bx bx-zoom-in"></i></a>
+              <!-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
+            </div>
+          </div>
+
+          
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-img"><img src="static/img/styles/6.webp" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Cut 5</h4>
+              <!-- <p>App</p> -->
+              <a href="static/img/styles/6.webp" data-gall="portfolioGallery" class="venobox preview-link" title="App 3"><i class="bx bx-zoom-in"></i></a>
+              <!-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
+            </div>
+          </div>
+
+          
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-img"><img src="static/img/styles/8.webp" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Cut 7</h4>
+              <!-- <p>Card</p> -->
+              <a href="static/img/styles/8.webp" data-gall="portfolioGallery" class="venobox preview-link" title="Card 3"><i class="bx bx-zoom-in"></i></a>
+              <!-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-img"><img src="static/img/styles/9.webp" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Cut 8</h4>
+              <!-- <p>Web</p> -->
+              <a href="static/img/styles/9.webp" data-gall="portfolioGallery" class="venobox preview-link" title="Web 3"><i class="bx bx-zoom-in"></i></a>
+              <!-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+    <!-- End Portfolio Section -->
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+
+        <div class="section-title" data-aos="zoom-out">
+          <h2>Testimonials</h2>
+          <p>What they are saying about us</p>
+        </div>
+
+        <div class="owl-carousel testimonials-carousel" data-aos="fade-up">
+
+          <div class="testimonial-item">
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              I went today and got my hair cut by Blue. I wanted my hair cut much shorter than before and honestly know very little about cutting hair and terms used. Blue however was extremely nice and he really put an extra effort to make sure the haircut was exactly what I wanted.
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+            
+            
+          </div>
+
+          <div class="testimonial-item">
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              A Shaving Grace has come through for me when the big chains (SportClips, GreatClips) were either booked up entirely or closed due to staffing shortages.  Both times I had Von as my barber, and he is very friendly and easy to talk with- knowing how to match the energy of his clients if they feel like talking.
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+            
+            
+          </div>
+
+          <div class="testimonial-item">
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              Excellent service. Walk ins are welcome. Convenient location. Fast and friendly service. Very good haircuts delivered professionally.
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+            
+            
+          </div>
+
+          <div class="testimonial-item">
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              Von did an amazing job with my son’s hair!  He was patient and listened to what he wanted.  Highly recommend!
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+            
+            
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+    <!-- End Testimonials Section -->
+
+
+    <!-- ======= F.A.Q Section ======= -->
+    <section id="faq" class="faq">
+      <div class="container">
+
+        <div class="section-title" data-aos="zoom-out">
+          <h2>F.A.Q</h2>
+          <p>Frequently Asked Questions</p>
+        </div>
+
+        <ul class="faq-list">
+
+          <li data-aos="fade-up" data-aos-delay="100">
+            <a data-toggle="collapse" class="" href="#faq1">Do I need an appointment?<i class="icofont-simple-up"></i></a>
+            <div id="faq1" class="collapse show" data-parent=".faq-list">
+              <p>
+                No, we are walk in only.
+              </p>
+            </div>
+          </li>
+
+          <li data-aos="fade-up" data-aos-delay="200">
+            <a data-toggle="collapse" href="#faq2" class="collapsed">Are you open on Sunday?<i class="icofont-simple-up"></i></a>
+            <div id="faq2" class="collapse" data-parent=".faq-list">
+              <p>
+                Yes we are open 7 days a week, and we stop accepting clients 45 minutes prior to the mall closing.
+              </p>
+            </div>
+          </li>
+
+          <li data-aos="fade-up" data-aos-delay="300">
+            <a data-toggle="collapse" href="#faq3" class="collapsed">Do you accept credit/debit card?<i class="icofont-simple-up"></i></a>
+            <div id="faq3" class="collapse" data-parent=".faq-list">
+              <p>
+                Yes, we don’t accept checks, cashapp, Zelle or Venmo payments.
+              </p>
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+    </section><!-- End F.A.Q Section -->
+
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team">
+      <div class="container">
+
+        <div class="section-title" data-aos="zoom-out">
+          <h2>Team</h2>
+          <p>Our Hardworking Team</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="200">
+              <div class="member-img">
+                <img src="static/img/team/Damien.jpeg" class="img-fluid" alt="">
+                <div class="social">
+                  <!-- <a href=""><i class="icofont-facebook"></i></a> -->
+                  <!-- <a href=""><i class="icofont-instagram"></i></a> -->
+                  
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Damian</h4>
+                <span>Master Barber</span>
+                <span>20 years of experience</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up">
+              <div class="member-img">
+                <img src="static/img/team/Jermeiah.jpeg" class="img-fluid" alt="">
+                <div class="social">
+                  <!-- <a href=""><i class="icofont-facebook"></i></a> -->
+                  <!-- <a href=""><i class="icofont-instagram"></i></a> -->
+                  
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Jeremiah</h4>
+                <span>15 years of experience. Specializing is all hairs types, and Straight Razor Shaves.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="100">
+              <div class="member-img">
+                <img src="static/img/team/Vonn.jpeg" class="img-fluid" alt="">
+                <div class="social">
+                  <!-- <a href=""><i class="icofont-facebook"></i></a> -->
+                  <!-- <a href=""><i class="icofont-instagram"></i></a> -->
+                  
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Vonn</h4>
+                <span>Specializes in Straight Razor Shaves and prides himself on having awesome customer service</span>
+              </div>
+            </div>
+          </div>
+
+          
+
+          
+
+        </div>
+
+      </div>
+    </section><!-- End Team Section -->
+
+    <!-- ======= Location Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+
+        <div class="section-title" data-aos="zoom-out">
+          <h2>Locations</h2>
+          <p>Our Locations</p>
+          
+        </div>
+
+       <div class="row"  data-aos="fade-right" data-aos-delay="300">
+        
+        <div class="col-sm card mr-sm-3  location_item">
+          <div class="card-body">
+              <h3 style="letter-spacing: 2px;">Deerbrook</h3>
+              <p >20131 Hwy 59 N Ste.2232 Houston, TX,77338</p>
+              <div class="row">
+                <div class="col-1">
+                  <i class="icofont-phone"></i>
+                </div>
+                <div class="col"> <p >+1 (346) 323-7284</p></div>
+              </div>
+             <i class="icofont-google-map"></i>
+              <a href="https://www.google.com/maps/place/Deerbrook+Mall/@30.0094843,-95.2724282,17z/data=!3m1!4b1!4m5!3m4!1s0x8640b301d8d317f9:0x8d9b17e738294008!8m2!3d30.0094843!4d-95.2702395" target="_blank" >Directions</a>
+          </div>
+
+        </div>
+
+        <div class="col-sm card mr-sm-3 location_item ">
+          <div class="card-body">
+            <h3 style="letter-spacing: 2px;">Willowbrook</h3>
+            <p >22000 Willowbrook Mall. Suite 1434 Houston, TX 77070</p>
+            <div class="row">
+                <div class="col-1">
+                  <i class="icofont-phone"></i>
+                </div>
+                <div class="col"><p >+1 (832) 604-7626</p></div>
+              </div>
+            <i class="icofont-google-map"></i>
+            <a href="https://www.google.com/maps/place/22000+Willowbrook+Mall+%231434,+Houston,+TX+77064/@29.9592077,-95.5445358,17z/data=!3m1!4b1!4m5!3m4!1s0x8640cde79f1586f7:0x3e365474907f29cf!8m2!3d29.9592031!4d-95.5419555" target="_blank">Directions</a>
+          </div>
+
+        </div>
+
+        <div class="col-sm card mr-sm-3 location_item ">
+
+          <div class="card-body">
+            <h3 style="letter-spacing: 2px;">Woodlands</h3>
+            <p >1201 Lake Woodlands Dr. Suite 2192 Spring, TX 77584</p>
+            <div class="row">
+                <div class="col-1">
+                  <i class="icofont-phone"></i>
+                </div>
+                <div class="col"><p >+1 (832) 604-7626</p></div>
+              </div>
+            <i class="icofont-google-map"></i>
+            <a href="https://www.google.com/maps/search/1201+Lake+Woodlands+Dr.+Suite+2192+Spring,+TX+77584/@30.1453474,-95.4773212,14z/data=!3m1!4b1" target="_blank">Directions</a>
+          </div>
+
+        </div>
+
+        <div class="col-sm card  location_item">
+          <div class="card-body">
+              <h3 style="letter-spacing: 2px;">Pearland</h3>
+              <p >1201 Broadway St. Suite 625 Pearland, TX 77584</p>
+              <div class="row">
+                <div class="col-1">
+                  <i class="icofont-phone"></i>
+                </div>
+                <div class="col"><p >+1 (281) 727-6628</p></div>
+              </div>
+              <i class="icofont-google-map"></i>
+              <a href="https://www.google.com/maps/place/1201+Broadway+St+%23625,+Pearland,+TX+77581/@29.5432019,-95.2243186,17z/data=!3m1!4b1!4m5!3m4!1s0x86409a8145986c7d:0xf728e0501e4ac3f2!8m2!3d29.5431973!4d-95.2217383" target="_blank" >Directions</a>
+          </div>
+
+        </div>
+       </div>
+
+       <div class="row my-sm-5"  data-aos="fade-right" data-aos-delay="300">
+          <div class="col-sm card mr-sm-3  location_item">
+            <div class="card-body">
+              <h3 style="letter-spacing: 2px;">Memorial City</h3>
+              <p >303 Memorial City Way. Suite 776 Houston, TX 77024</p>
+              <div class="row">
+                <div class="col-1">
+                  <i class="icofont-phone"></i>
+                </div>
+                <div class="col"><p >+1 (346) 330-9641</p></div>
+              </div>
+              <i class="icofont-google-map"></i>
+              <a href="https://www.google.com/maps/place/303+Memorial+City+Way+STE+776,+Houston,+TX+77024/@29.7814954,-95.5426026,17z/data=!3m1!4b1!4m5!3m4!1s0x8640c4963d242aa1:0xf951a5437164fcf0!8m2!3d29.7814908!4d-95.5400223" target="_blank">Directions</a>
+            </div>
+
+          </div>
+
+           <div class="col-sm card mr-sm-3  location_item">
+            <div class="card-body">
+              <h3 style="letter-spacing: 2px;">First Colony</h3>
+              <p >16535 Southwest Freeway. Suite 815 Sugarland, TX 77479</p>
+              <div class="row">
+                <div class="col-1">
+                  <i class="icofont-phone"></i>
+                </div>
+                <div class="col"><p >+1 (281) 980-9983</p></div>
+              </div>
+              <i class="icofont-google-map"></i>
+              <a href="https://www.google.com/maps/place/16535+Southwest+Fwy+Suite+815,+Sugar+Land,+TX+77479/@29.5924949,-95.6280762,17z/data=!3m1!4b1!4m5!3m4!1s0x8640e6bd7e8a0279:0x9bdba0d9501551bb!8m2!3d29.5924903!4d-95.6254959" target="_blank" >Directions</a>
+            </div>
+
+          </div>
+
+           
+
+          <div class="col-sm card  location_item">
+            <div class="card-body">
+              <h3 style="letter-spacing: 2px;">A Shaving Grace Barber Shop</h3>
+              <p >66 W Towne Mall Space C-4, Madison, WI 53719</p>
+              <div class="row">
+                <div class="col-1">
+                  <i class="icofont-phone"></i>
+                </div>
+                <div class="col"><p >+1 (608) 821 0287</p></div>
+              </div>
+              <i class="icofont-google-map"></i>
+              <a href="https://www.google.com/maps/place/A+Shaving+Grace+Barber+Shop/@43.0569762,-89.5055749,17z/data=!3m1!4b1!4m5!3m4!1s0x8807afe4cc5c8a9b:0x53e6930949c1d468!8m2!3d43.0569762!4d-89.5055749?hl=en-US" target="_blank">Directions</a>
+            </div>
+
+          </div>
+       </div>
+
+       
+
+      </div>
+    </section>
+    <!-- End Location Section -->
+
+
+      <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-title" data-aos="zoom-out">
+          <h2>Contact</h2>
+          <p>Contact us</p>
+          
+        </div>
+
+        <div class="row">
+
+          <div class="col" data-aos="fade-right">
+
+            <form id="contact-form" class="php-email-form">
+              <div class="form-row">
+                <div class="col-md-6 form-group">
+                  <input type="text" class="form-control" id="from_name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <div class="validate"></div>
+                </div>
+                <div class="col-md-6 form-group">
+                  <input type="user_email" class="form-control" id="user_email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                  <div class="validate"></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" id="user_subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                <div class="validate"></div>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" id="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                <div class="validate"></div>
+              </div>
+              <div class="text-center"><button onclick="sendMail()" class="button" value="Send">Send Message</button></div>
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+
+      <a href="index.html"><img src="static/img/logo.png" alt="logo" class="my-5" height="100px"></a>
+
+
+      <div class="social-links">
+        <!-- <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a> -->
+        <a href="https://www.facebook.com/Christianbarbersalon" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="https://instagram.com/ashavinggrace?igshid=YmMyMTA2M2Y=" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="https://maps.app.goo.gl/jzYqgFXZ7s7KvCL66?g_st=ic" target="_blank" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <!-- <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a> -->
+      </div>
+      <div class="copyright">
+
+
+        &copy; Copyright <strong><span>AShavingGraceBarberShop</span></strong>. All Rights Reserved
+
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/selecao-bootstrap-template/ -->
+        
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
+
+
+  <!-- Start of LiveChat (www.livechat.com) code -->
+<script>
+    window.__lc = window.__lc || {};
+    window.__lc.license = 14723673;
+    ;(function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice))
+</script>
+<noscript><a href="https://www.livechat.com/chat-with/14723673/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
+<!-- End of LiveChat code -->
+
+  <!-- Vendor JS Files -->
+  <script src="static/vendor/jquery/jquery.min.js"></script>
+  <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="static/vendor/php-email-form/validate.js"></script>
+  <script src="static/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="static/vendor/venobox/venobox.min.js"></script>
+  <script src="static/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="static/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="static/js/main.js"></script>
+
+  <script>
+    const weekday = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+    const d = new Date();
+    let day = weekday[d.getDay()-1];
+    
+
+    var table = document.getElementById("times");
+    const child = table.children.item(0).children;
+
+    for(x in child){
+      var tr = child[x];
+      var td = child[x].children.item(0).innerText;
+      if(day === td){
+        tr.style.color = "#f7080d";
+      }
+    }
+
+  </script>
+<!-- Email JS -->
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init("x_IQQe2rLGus9j1tj");
+   })();
+</script>
+<script type="text/javascript">
+  function sendMail(){
+        var templateParams = {
+        from_name: document.getElementById('from_name').value,
+        email: document.getElementById('user_email').value,
+        message: document.getElementById('message').value
+    };
+    
+    emailjs.send('service_zz51hts', 'template_u5n716j', templateParams)
+        .then(function(response) {
+          console.log('SUCCESS!', response.status, response.text);
+          alert(response.text)
+        }, function(error) {
+          console.log('FAILED...', error);
+        });
+  }
+</script>
+
+<!-- End Email JS  -->
+
+
+</body>
+
+</html>
